@@ -14,7 +14,15 @@ public class AgriculturalAutomationSystem {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                MainFrame f= new MainFrame();
+                f.setVisible(true);
+            }
+        });
     }
     
 }

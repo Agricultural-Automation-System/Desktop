@@ -4,11 +4,6 @@ package javaswingdev.form;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
-import static javaswingdev.form.GridScale.BOX_SIZE;
-import static javaswingdev.form.GridScale.COLS;
-import static javaswingdev.form.GridScale.ROWS;
-import javaswingdev.menu.EventMenuSelected;
 
 
 public class Scale extends javax.swing.JPanel {
