@@ -11,21 +11,21 @@ import javax.swing.JPanel;
 import javaswingdev.system.Sensable;
 
 
-public class Grid extends JPanel implements Sensable {
+public class GridScale extends JPanel implements Sensable {
 
-        protected static final int ROWS = 720;
-        protected static final int COLS = 300;
-        protected static final int BOX_SIZE = 10;
+        protected static final int ROWS = 15;
+        protected static final int COLS = 1;
+        protected static final int BOX_SIZE = 20;
 
-        private List<Color> colors;
+        private final List<Color> colors;
 
-        public Grid() {
+        public GridScale() {
             int rand;
             int length = ROWS * COLS;
             colors = new ArrayList<>(length);
             for (int i = 0; i < ROWS; i++)
                 for (int j = 0; j < COLS; j++) {
-                    rand = (int) (i*Math.random()) % 15;
+                    rand = (int) (i) % 15;
                     int r = (PH_SCALE_R[rand]);
                     int g = (PH_SCALE_G[rand]);
                     int b = (PH_SCALE_B[rand]);
@@ -50,6 +50,7 @@ public class Grid extends JPanel implements Sensable {
             for (int row = 0; row < ROWS; row++) {
                 for (int col = 0; col < COLS; col++) {
                     int index = (row * COLS) + col;
+                    
                     g2d.setColor(colors.get(index));
                     g2d.fillRect(xOffset + (col * BOX_SIZE),
                             yOffset + (row * BOX_SIZE),
