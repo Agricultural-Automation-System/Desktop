@@ -12,26 +12,76 @@ import javaswingdev.system.Sensable;
 
 
 public class Grid extends JPanel implements Sensable {
+    
+    
+    
+    
 
-        protected static final int ROWS = 720;
-        protected static final int COLS = 300;
-        protected static final int BOX_SIZE = 10;
-
+        protected static int ROWS = 300;
+        protected static int COLS = 720;
+        protected static int BOX_SIZE = 1;
+        protected static int WIGHTNESS = 30;
         private List<Color> colors;
 
-        public Grid() {
+        public Grid(int[][] PH) {
+            ROWS = PH.length;
+            COLS = PH[0].length;
+           
             int rand;
             int length = ROWS * COLS;
+             int r,g,b;
             colors = new ArrayList<>(length);
             for (int i = 0; i < ROWS; i++)
                 for (int j = 0; j < COLS; j++) {
-                    rand = (int) (i*Math.random()) % 15;
-                    int r = (PH_SCALE_R[rand]);
-                    int g = (PH_SCALE_G[rand]);
-                    int b = (PH_SCALE_B[rand]);
+                    rand = (int) (PH[i][j]%15);
+                     if(PH_SCALE_R[rand] < 255-WIGHTNESS)
+                     r = (PH_SCALE_R[rand]+WIGHTNESS);
+                    else 
+                     r = (PH_SCALE_R[rand]);
+                    
+                     if(PH_SCALE_G[rand] < 255-WIGHTNESS)
+                     g = (PH_SCALE_G[rand]+WIGHTNESS);
+                    else 
+                     g = (PH_SCALE_G[rand]);
+                     
+                      if(PH_SCALE_B[rand] < 255-WIGHTNESS)
+                     b = (PH_SCALE_B[rand]+WIGHTNESS);
+                    else 
+                     b = (PH_SCALE_B[rand]);
                     colors.add(new Color(r, g, b));
                 }
         }
+        
+        
+
+//        public Grid() {
+//            
+//           
+//            int rand;
+//            int length = ROWS * COLS;
+//             int r,g,b;
+//            colors = new ArrayList<>(length);
+//            for (int i = 0; i < ROWS; i++)
+//                for (int j = 0; j < COLS; j++) {
+//                    rand = (int) (Math.random()*14) % 15;
+//                     if(PH_SCALE_R[rand] < 255-WIGHTNESS)
+//                     r = (PH_SCALE_R[rand]+WIGHTNESS);
+//                    else 
+//                     r = (PH_SCALE_R[rand]);
+//                    
+//                     if(PH_SCALE_G[rand] < 255-WIGHTNESS)
+//                     g = (PH_SCALE_G[rand]+WIGHTNESS);
+//                    else 
+//                     g = (PH_SCALE_G[rand]);
+//                     
+//                      if(PH_SCALE_B[rand] < 255-WIGHTNESS)
+//                     b = (PH_SCALE_B[rand]+WIGHTNESS);
+//                    else 
+//                     b = (PH_SCALE_B[rand]);
+//                    colors.add(new Color(r, g, b));
+//                }
+//        }
+        
 
         @Override
         public Dimension getPreferredSize() {
