@@ -39,11 +39,12 @@ public class MainFrame extends javax.swing.JFrame {
     public void showForm(Component com) {
         body.removeAll();
         body.add(com);
-        body.repaint();
         body.revalidate();
+        body.repaint();
+        
     }
 
-    
+    //....................,
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
