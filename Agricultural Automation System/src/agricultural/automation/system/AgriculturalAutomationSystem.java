@@ -15,14 +15,14 @@ public class AgriculturalAutomationSystem {
      */
     public static void main(String[] args) {
         
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                MainFrame f= new MainFrame();
-                f.setVisible(true);
-            }
-        });
+       loading mLoading = new loading();
+        
+
+       
+
+        
+        
+       
     }
     
 }
