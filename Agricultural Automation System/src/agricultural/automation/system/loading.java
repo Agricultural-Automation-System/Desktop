@@ -130,7 +130,7 @@ public class loading extends javax.swing.JFrame {
         login mlogin = new login();
         try {
             for (int j = 0; j <= 100; j++) {
-                Thread.sleep(10);
+                Thread.sleep(5);
                 this.jProgressBar1.setValue(j);
             }
 

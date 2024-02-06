@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import javaswingdev.system.Sensable;
 
 
-public class Grid extends JPanel implements Sensable {
+public class DrowGrid extends JPanel implements Sensable {
     
     
     
@@ -23,7 +23,7 @@ public class Grid extends JPanel implements Sensable {
         protected static int WIGHTNESS = 30;
         private List<Color> colors;
 
-        public Grid(int[][] PH) {
+        public DrowGrid(int[][] PH) {
             ROWS = PH.length;
             COLS = PH[0].length;
            
@@ -54,7 +54,7 @@ public class Grid extends JPanel implements Sensable {
         
         
 
-//        public Grid() {
+//        public DrowGrid() {
 //            
 //           
 //            int rand;

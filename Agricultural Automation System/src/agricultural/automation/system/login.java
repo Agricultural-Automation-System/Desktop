@@ -116,6 +116,11 @@ public class login extends javax.swing.JFrame {
         clearButton.setForeground(new java.awt.Color(51, 255, 51));
         clearButton.setText("Cleare");
         clearButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        clearButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                clearButtonMouseClicked(evt);
+            }
+        });
 
         exitPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -211,21 +216,29 @@ public class login extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void clearButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearButtonMouseClicked
+       username.setText("");
+       password.setText("");
+    }//GEN-LAST:event_clearButtonMouseClicked
+
     private void exitPanelMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_exitPanelMouseClicked
         this.dispose();
     }// GEN-LAST:event_exitPanelMouseClicked
 
     private void logButtonMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_logButtonMouseClicked
-        if (password.getText().equals("")) {
-
-            JOptionPane.showMessageDialog(null, "Please fill out the password");
-
-        } else if (username.getText().equals("")) {
+         if (username.getText().equals("")) {
 
             JOptionPane.showMessageDialog(null, "Please fill out the username");
 
+        }else if (password.getText().equals("")) {
+
+            JOptionPane.showMessageDialog(null, "Please fill out the password");
+
         } else if (password.getText().equals("admin") && username.getText().equals("admin")) {
             this.load();
+        }else{
+            JOptionPane.showMessageDialog(null, "The username or the password is uncorrect");
+
         }
     }// GEN-LAST:event_logButtonMouseClicked
 
