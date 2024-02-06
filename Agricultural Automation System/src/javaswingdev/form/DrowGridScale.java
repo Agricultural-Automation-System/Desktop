@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 import javaswingdev.system.Sensable;
 
 
-public class GridScale extends JPanel implements Sensable {
+public class DrowGridScale extends JPanel implements Sensable {
 
         protected static final int ROWS = 15;
         protected static final int COLS = 1;
@@ -20,7 +20,7 @@ public class GridScale extends JPanel implements Sensable {
 
         private final List<Color> colors;
 
-        public GridScale() {
+        public DrowGridScale() {
             int rand;
             int length = ROWS * COLS;
             colors = new ArrayList<>(length);

@@ -25,9 +25,9 @@ public class MainF extends javax.swing.JFrame {
 
                 }
                 if (index == 0 && indexSubMenu == 0) {
-                    showForm(new FormGrid(PH, index + "+" + indexSubMenu));
+                    showForm(new Body(PH, index + "+" + indexSubMenu));
                 } else {
-                    showForm(new FormGrid(PH, index + "+" + indexSubMenu));
+                    showForm(new Body(PH, index + "+" + indexSubMenu));
                 }
             }
         });
@@ -42,7 +42,17 @@ public class MainF extends javax.swing.JFrame {
 
     }
 
-    // hi
+ public static void main(String args[]) {
+ 
+ 
+ java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new MainF().setVisible(true);
+            }
+        });
+ 
+ }
+ 
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated
@@ -61,7 +71,7 @@ public class MainF extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        background.setBackground(new java.awt.Color(206, 206, 206));
+        background.setBackground(new java.awt.Color(255, 255, 255));
 
         menuContainer.setBackground(new java.awt.Color(255, 255, 255));
 

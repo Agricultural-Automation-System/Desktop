@@ -6,9 +6,9 @@ import java.awt.Component;
 import java.awt.Graphics;
 
 
-public class Scale extends javax.swing.JPanel {
+public class ScaleBody extends javax.swing.JPanel {
 
-    public Scale() {
+    public ScaleBody() {
         initComponents();
         init();
       
@@ -17,7 +17,7 @@ public class Scale extends javax.swing.JPanel {
     
     private void init() {
                    
-                   showGridScale(new GridScale());
+                   showGridScale(new DrowGridScale());
               
     }
     
