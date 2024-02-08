@@ -39,26 +39,7 @@ public class AgriculturalAutomationSystem {
 
     public static void main(String[] args) throws Exception {
 
-  String urlString = "https://api.openweathermap.org/data/2.5/forecast?lat=24.128841&lon=32.899119&appid=ac17ac2d45229dfb2be5e7ef1410a8d3";
-
-      
-            // call api and get response
-            HttpURLConnection conn ;
-            conn = fetchApiResponse(urlString);
-            // check for response status
-            // 200 - means that the connection was a success
-            if (conn.getResponseCode() != 200) {
-                System.out.println("Error: Could not connect to API");
-               
-            }
-            
-             // store resulting json data
-            
-            Scanner scanner = new Scanner(conn.getInputStream());
-            while(scanner.hasNext()){
-                // read and store into the string builder
-                System.out.println(scanner.nextLine());
-            }
+            new loading();
          
     }
 

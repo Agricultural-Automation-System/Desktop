@@ -32,7 +32,7 @@ public class Menu extends JPanel {
         scroll.getViewport().setOpaque(false);
         scroll.setViewportBorder(null);
         add(scroll);
-        addTitle("Sensors");
+        addTitle("Dashboard");
         addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.VIEW_STREAM, "Water Flow Sensor"));
         addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.VIEW_QUILT, "PH Sensor"));
         addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.VIEW_MODULE, "NPK Soil Sensor", "Nitrogen", "Phosphorus",
@@ -40,10 +40,10 @@ public class Menu extends JPanel {
         addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.SUBJECT, "4 × 1 Soil Sensor", "Soil EC",
                 "Soil Moisture Contents", "Salinity", "Soil Temperature"));
 
-        addTitle("Environment");
-        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.VIEW_HEADLINE, "Temperature"));
-        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.TIMELINE, "Wind"));
-        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.CLOUD, "Sunlight Intensity"));
+       // addTitle("Environment");
+        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.VIEW_HEADLINE, "Environment"));
+       // addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.TIMELINE, "Wind"));
+      //  addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.CLOUD, "Sunlight Intensity"));
 
 //        addTitle("WEB APPS");
 //        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.MAIL_OUTLINE, "Email", "Inbox", "Read", "Compose"));

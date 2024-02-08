@@ -34,7 +34,7 @@ public class WeatherPresen extends javax.swing.JPanel {
             e.printStackTrace();
         }
 
-        //System.out.println("Could not find resource");
+        // System.out.println("Could not find resource");
         return null;
     }
 
@@ -123,7 +123,8 @@ public class WeatherPresen extends javax.swing.JPanel {
 
         // update winddirection image
         long winddirection = (long) weatherData.get("winddirection");
-        windspeedImage.setIcon(rotate(winddirection));
+        System.out.println(winddirection);
+        windspeedImage.setIcon(rotate(3.14 / 2 + winddirection * 3.14 / 180));
 
     }
 

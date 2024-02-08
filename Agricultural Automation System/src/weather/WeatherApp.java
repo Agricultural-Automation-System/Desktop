@@ -20,7 +20,7 @@ public class WeatherApp {
 
         // build API request URL with location coordinates
         String urlString = "https://api.open-meteo.com/v1/forecast?latitude=" + latitude + "&longitude=" + longitude +
-                "&hourly=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m,wind_direction_10m&timezone=Africa%2FCairo";
+                "&hourly=temperature_2m,relative_humidity_2m,weather_code,wind_speed_10m,wind_direction_10m&timezone=Africa%2FCairo&forecast_days=14";
         try {
             // call api and get response
             HttpURLConnection conn = fetchApiResponse(urlString);

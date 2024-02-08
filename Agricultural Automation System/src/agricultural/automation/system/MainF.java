@@ -25,9 +25,11 @@ public class MainF extends javax.swing.JFrame {
 
                 }
                 if (index == 0 && indexSubMenu == 0) {
-                    showForm(new Body(PH, index + "+" + indexSubMenu));
+                    showForm(new BodyLineChart(PH, index + "+" + indexSubMenu));
+                } else if(index == 4 && indexSubMenu == 0){
+                     showForm(new BodyLineChart(PH, index + "+" + indexSubMenu));
                 } else {
-                    showForm(new Body(PH, index + "+" + indexSubMenu));
+                    showForm(new BodyGrid(PH, index + "+" + indexSubMenu));
                 }
             }
         });

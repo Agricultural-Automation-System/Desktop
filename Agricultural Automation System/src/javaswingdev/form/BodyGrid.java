@@ -3,9 +3,9 @@ package javaswingdev.form;
 import java.awt.Component;
 import javaswingdev.menu.EventMenuSelected;
 
-public class Body extends javax.swing.JPanel {
+public class BodyGrid extends javax.swing.JPanel {
 
-    public Body(int[][] PH,String name) {
+    public BodyGrid(int[][] PH,String name) {
         
         initComponents();
         init(PH);
