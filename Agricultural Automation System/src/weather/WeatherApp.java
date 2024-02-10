@@ -10,7 +10,6 @@ import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
-import javax.swing.JOptionPane;
 
 // retreive weather data from API - this backend logic will fetch the latest weather
 // data from the external API and return it. The GUI will
@@ -28,7 +27,6 @@ public class WeatherApp {
 
             // check for response status
             // 200 - means that the connection was a success
-           
             if (conn.getResponseCode() != 200) {
                 System.out.println("Error: Could not connect to API");
                 return null;
@@ -41,8 +39,7 @@ public class WeatherApp {
                 // read and store into the string builder
                 resultJson.append(scanner.nextLine());
             }
- 
-          
+
             // close scanner
             scanner.close();
 
@@ -92,7 +89,7 @@ public class WeatherApp {
 
             return weatherData;
         } catch (Exception e) {
-            //e.printStackTrace();
+            e.printStackTrace();
         }
 
         return null;
@@ -113,8 +110,7 @@ public class WeatherApp {
             conn.connect();
             return conn;
         } catch (IOException e) {
-                        JOptionPane.showMessageDialog(null, "your conectin has a poblem");
-
+            e.printStackTrace();
         }
 
         // could not make connection
