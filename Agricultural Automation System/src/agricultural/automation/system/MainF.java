@@ -7,7 +7,7 @@ import javaswingdev.menu.EventMenuSelected;
 public class MainF extends javax.swing.JFrame {
 
     public MainF() {
-
+        super("Agricultural Automation System");
         initComponents();
         init();
     }
@@ -25,9 +25,11 @@ public class MainF extends javax.swing.JFrame {
 
                 }
                 if (index == 0 && indexSubMenu == 0) {
-                    showForm(new Body(PH, index + "+" + indexSubMenu));
+                    showForm(new BodyLineChart(PH, index + "+" + indexSubMenu));
+                } else if(index == 4 && indexSubMenu == 0){
+                     showForm(new BodyLineChart(PH, index + "+" + indexSubMenu));
                 } else {
-                    showForm(new Body(PH, index + "+" + indexSubMenu));
+                    showForm(new BodyGrid(PH, index + "+" + indexSubMenu));
                 }
             }
         });
@@ -97,8 +99,7 @@ public class MainF extends javax.swing.JFrame {
             .addGroup(backgroundLayout.createSequentialGroup()
                 .addComponent(menuContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(body, javax.swing.GroupLayout.DEFAULT_SIZE, 899, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(body, javax.swing.GroupLayout.DEFAULT_SIZE, 1077, Short.MAX_VALUE))
         );
         backgroundLayout.setVerticalGroup(
             backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
