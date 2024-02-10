@@ -21,9 +21,9 @@ import raven.chart.line.LineChart;
 import utils.SimpleForm;
 import utils.DateCalculator;
 
-public class DashboardForm extends SimpleForm {
+public class DrowRevenLineChart extends SimpleForm {
 
-    public DashboardForm() {
+    public DrowRevenLineChart() {
         init();
     }
 
@@ -101,11 +101,11 @@ public class DashboardForm extends SimpleForm {
 
     private void createLineChart() {
         lineChart = new LineChart();
-        lineChart.setChartType(LineChart.ChartType.LINE);
-        lineChart.putClientProperty(FlatClientProperties.STYLE, ""
-                + "border:5,5,5,5,$Component.borderColor,,20");
+      //  lineChart.setChartType(LineChart.ChartType.LINE);
+      //  lineChart.putClientProperty(FlatClientProperties.STYLE, ""
+      //          + "border:5,5,5,5,$Component.borderColor,,20");
         add(lineChart);
-        createLineChartData();
+      //  createLineChartData();
     }
 
     private void createLineChartData() {
