@@ -41,7 +41,7 @@ public class Menu extends JPanel {
                 "Soil Moisture Contents", "Salinity", "Soil Temperature"));
 
        // addTitle("Environment");
-        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.VIEW_HEADLINE, "Environment"));
+       // addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.VIEW_HEADLINE, "Environment"));
        // addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.TIMELINE, "Wind"));
       //  addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.CLOUD, "Sunlight Intensity"));
 
@@ -60,6 +60,7 @@ public class Menu extends JPanel {
 //        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.INBOX, "Special Pages", "Blank page", "Faq", "Invoice", "Profile", "Pricing", "Timeline"));
 //        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.LOCK_OUTLINE, "Authentication", "Login", "Register"));
 //        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.ERROR_OUTLINE, "Error", "404", "500"));
+
     }
 
     private JScrollPane createScroll() {

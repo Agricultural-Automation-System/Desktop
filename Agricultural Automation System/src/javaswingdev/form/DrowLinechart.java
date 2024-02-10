@@ -9,14 +9,14 @@ import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.RenderingHints;
 import java.awt.Stroke;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
 import javax.swing.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 @SuppressWarnings("serial")
 public class DrowLinechart extends JPanel {
-   private static final int MAX_SCORE = 100;
+   private  int MAX_SCORE = 100;
    private static final int PREF_W = 800;
    private static final int PREF_H = 650;
    private static final int BORDER_GAP = 1;
@@ -30,6 +30,7 @@ public class DrowLinechart extends JPanel {
    
    public DrowLinechart(List<Integer> scores) {
       this.scores = scores;
+      MAX_SCORE = Collections.max(scores)+1;
     
      
    }
@@ -53,7 +54,8 @@ public class DrowLinechart extends JPanel {
       // create x and y axes
       g2.drawLine(BORDER_GAP, getHeight() - BORDER_GAP, BORDER_GAP, BORDER_GAP);
       g2.drawLine(BORDER_GAP, getHeight() - BORDER_GAP, getWidth() - BORDER_GAP, getHeight() - BORDER_GAP);
-
+   //   g2.drawLine(getWidth() - BORDER_GAP, getHeight() - BORDER_GAP, getWidth() - BORDER_GAP, BORDER_GAP);
+//int xx1,xx0,yy1,yy0;
       // create hatch marks for y axis.
       for (int i = 0; i < Y_HATCH_CNT; i++) {
          int x0 = BORDER_GAP;
@@ -61,6 +63,7 @@ public class DrowLinechart extends JPanel {
          int y0 = getHeight() - (((i + 1) * (getHeight() - BORDER_GAP * 2)) / Y_HATCH_CNT + BORDER_GAP);
          int y1 = y0;
          g2.drawLine(x0, y0, x1, y1);
+        drawDash(g2,x1, y0, getWidth() , y1 ,false);
       }
 
       // and for x axis
@@ -70,6 +73,8 @@ public class DrowLinechart extends JPanel {
          int y0 = getHeight() - BORDER_GAP;
          int y1 = y0 - GRAPH_POINT_WIDTH;
          g2.drawLine(x0, y0, x1, y1);
+                 drawDash(g2,x0, BORDER_GAP, x1, y1 ,(i+2) % ((scores.size())/5) ==0 );
+
       }
       // creat lable
 
@@ -94,6 +99,24 @@ public class DrowLinechart extends JPanel {
          g2.fillOval(x, y, ovalW, ovalH);
       }
    }
+private void drawDash(Graphics g,int x0,int y0,int x1 ,int y1,boolean R ){
+    if (R)
+        g.setColor (Color.RED);
+    else
+        g.setColor (Color.WHITE);
+if (x0==x1)
+for(int i=y0; i< y1 ;i=i+15){
+    g.drawLine(x0, i, x1, i+10);
+
+
+}else
+    for(int i=x0; i< x1 ;i=i+15){
+    g.drawLine(i, y0, i+10, y0);
+
+
+}
+    g.setColor (Color.BLACK);
+}
 
    @Override
    public Dimension getPreferredSize() {
