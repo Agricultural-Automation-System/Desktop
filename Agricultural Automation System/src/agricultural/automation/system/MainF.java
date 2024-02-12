@@ -3,37 +3,45 @@ package agricultural.automation.system;
 import java.awt.Component;
 import javaswingdev.form.*;
 import javaswingdev.menu.EventMenuSelected;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainF extends javax.swing.JFrame {
 
-    public MainF() {
+    public MainF(String authentication) {
         super("Agricultural Automation System");
         initComponents();
         init();
     }
+    
 
     private void init() {
-
+        
         menu.addEvent(new EventMenuSelected() {
             @Override
             public void menuSelected(int index, int indexSubMenu) {
                 int[][] PH = new int[300][720];
+                 List<Integer> scores = new  ArrayList<Integer>() ;
+                 //todo get sensors data 
                 for (int i = 0; i < PH.length; i++) {
                     for (int j = 0; j < PH[0].length; j++) {
                         PH[i][j] = (int) (Math.random() * 14);
                     }
 
                 }
+                try{
                 if (index == 0 && indexSubMenu == 0) {
-                    showForm(new BodyLineChart(PH, index + "+" + indexSubMenu));
-                } else if(index == 4 && indexSubMenu == 0){
-                     showForm(new BodyLineChart(PH, index + "+" + indexSubMenu));
+                    showForm(new BodyLineChart( scores ,20));
+                } else if(index == 4 || index == 5 || index == 6){
+                     showForm(new BodyControl(index));
                 } else {
-                    showForm(new BodyGrid(PH, index + "+" + indexSubMenu));
+                    showForm(new BodyGrid(PH));
+                }
+                }catch(Exception  e){
                 }
             }
         });
-        menu.setSelectedIndex(1, 0);// set the defult mode
+        menu.setSelectedIndex(4, 0);// set the defult mode
     }
 
     public void showForm(Component com) {
@@ -49,7 +57,7 @@ public class MainF extends javax.swing.JFrame {
  
  java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainF().setVisible(true);
+                new MainF("00000").setVisible(true);
             }
         });
  

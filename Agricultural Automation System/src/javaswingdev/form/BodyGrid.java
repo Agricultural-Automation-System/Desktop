@@ -4,8 +4,11 @@ import java.awt.Component;
 import javaswingdev.menu.EventMenuSelected;
 
 public class BodyGrid extends javax.swing.JPanel {
-
-    public BodyGrid(int[][] PH,String name) {
+private void upDate(){
+    //body.upDate();
+    
+    } 
+    public BodyGrid(int[][] PH) {
         
         initComponents();
         init(PH);

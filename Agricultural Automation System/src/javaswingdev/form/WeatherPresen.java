@@ -1,14 +1,14 @@
 package javaswingdev.form;
 
-import javaswingdev.menu.EventMenuSelected;
+//import javaswingdev.menu.EventMenuSelected;
 import org.json.simple.JSONObject;
 import weather.WeatherApp;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+//import java.awt.event.ActionEvent;
+//import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -31,7 +31,7 @@ public class WeatherPresen extends javax.swing.JPanel {
             // returns an image icon so that our component can render it
             return new ImageIcon(image);
         } catch (IOException e) {
-            e.printStackTrace();
+           System.out.println(e.toString());
         }
 
         // System.out.println("Could not find resource");
@@ -83,7 +83,6 @@ public class WeatherPresen extends javax.swing.JPanel {
         add(windspeedText);
 
         weatherData = WeatherApp.getWeatherData(24.1292617, 32.8991424);
-
         // update gui
 
         // update weather image
@@ -149,7 +148,7 @@ public class WeatherPresen extends javax.swing.JPanel {
             return new ImageIcon(result);
 
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e.toString());
         }
 
         return null;

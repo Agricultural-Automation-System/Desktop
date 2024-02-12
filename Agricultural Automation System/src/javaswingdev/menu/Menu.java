@@ -40,10 +40,10 @@ public class Menu extends JPanel {
         addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.SUBJECT, "4 × 1 Soil Sensor", "Soil EC",
                 "Soil Moisture Contents", "Salinity", "Soil Temperature"));
 
-       // addTitle("Environment");
-       // addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.VIEW_HEADLINE, "Environment"));
-       // addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.TIMELINE, "Wind"));
-      //  addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.CLOUD, "Sunlight Intensity"));
+        addTitle("Control Mechanisms");
+        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.VIEW_HEADLINE, "The Irrigation"));
+        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.VIEW_HEADLINE, " Fertilizer Dispenser"));
+        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.VIEW_HEADLINE, "Pest Control"));
 
 //        addTitle("WEB APPS");
 //        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.MAIL_OUTLINE, "Email", "Inbox", "Read", "Compose"));

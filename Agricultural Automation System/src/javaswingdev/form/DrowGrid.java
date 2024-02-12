@@ -53,7 +53,35 @@ public class DrowGrid extends JPanel implements Sensable {
         }
         
         
-
+       public void setArr(int [][] PH){
+           ROWS = PH.length;
+            COLS = PH[0].length;
+           
+            int rand;
+            int length = ROWS * COLS;
+             int r,g,b;
+            colors = new ArrayList<>(length);
+            for (int i = 0; i < ROWS; i++)
+                for (int j = 0; j < COLS; j++) {
+                    rand = (int) (PH[i][j]%15);
+                     if(PH_SCALE_R[rand] < 255-WIGHTNESS)
+                     r = (PH_SCALE_R[rand]+WIGHTNESS);
+                    else 
+                     r = (PH_SCALE_R[rand]);
+                    
+                     if(PH_SCALE_G[rand] < 255-WIGHTNESS)
+                     g = (PH_SCALE_G[rand]+WIGHTNESS);
+                    else 
+                     g = (PH_SCALE_G[rand]);
+                     
+                      if(PH_SCALE_B[rand] < 255-WIGHTNESS)
+                     b = (PH_SCALE_B[rand]+WIGHTNESS);
+                    else 
+                     b = (PH_SCALE_B[rand]);
+                    colors.add(new Color(r, g, b));
+                }
+            repaint();
+            }
 //        public DrowGrid() {
 //            
 //           
@@ -87,6 +115,8 @@ public class DrowGrid extends JPanel implements Sensable {
         public Dimension getPreferredSize() {
             return new Dimension(COLS * BOX_SIZE, ROWS * BOX_SIZE);
         }
+        
+
 
         @Override
         protected void paintComponent(Graphics g) {
@@ -96,7 +126,7 @@ public class DrowGrid extends JPanel implements Sensable {
             int xOffset = (getWidth() - (COLS * BOX_SIZE)) / 2;
             int yOffset = (getHeight() - (ROWS * BOX_SIZE)) / 2;
 
-            System.out.println("...");
+            //System.out.println("...");
             for (int row = 0; row < ROWS; row++) {
                 for (int col = 0; col < COLS; col++) {
                     int index = (row * COLS) + col;
