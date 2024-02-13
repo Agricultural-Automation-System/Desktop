@@ -8,6 +8,8 @@
 ![image](https://github.com/Agricultural-Automation-System/Desktop/assets/112937503/b950d42d-cb0b-4622-8cd0-e089158b8bc0)
 
 ![image](https://github.com/Agricultural-Automation-System/Desktop/assets/112937503/3f8a9507-f7f0-45f8-94bd-017ec5dcc979)
+![image](https://github.com/Agricultural-Automation-System/Desktop/assets/112937503/d231f323-28e3-4139-9894-d466fcde954e)
+
 ![image](https://github.com/Agricultural-Automation-System/Desktop/assets/112937503/60839cf0-31d6-4265-887b-97224e0525ce)
 
 ![image](https://github.com/Agricultural-Automation-System/Desktop/assets/112937503/b6447cd8-8e91-41a5-be1f-12bc1513181c)
