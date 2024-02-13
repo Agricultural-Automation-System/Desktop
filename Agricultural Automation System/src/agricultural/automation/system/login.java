@@ -8,10 +8,8 @@ import java.net.URI;
 import java.net.URISyntaxException;
 
 public class login extends javax.swing.JFrame {
-    private String usernameIn;
-    private String passwordIn;
-    private String usernameAPI;
-    private String passwordAPI;
+
+    
     private String authentication;
     public login() {
         initComponents();
@@ -273,9 +271,8 @@ public class login extends javax.swing.JFrame {
     }// GEN-LAST:event_exitPanelMouseClicked
 
     private void logButtonMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_logButtonMouseClicked
-        passwordIn = password.getText();
-        usernameIn = username.getText();
-        authentication = FetchAuthentication();
+        String usernameIn = username.getText();
+        String passwordIn = password.getText();
          if (usernameIn.equals("")) {
 
             JOptionPane.showMessageDialog(null, "Please fill out the username");
@@ -284,7 +281,7 @@ public class login extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(null, "Please fill out the password");
 
-        } else if (passwordIn.equals(passwordAPI) && usernameIn.equals(usernameAPI)) {
+        } else if (FetchAuthentication(usernameIn, passwordIn)) {
             this.load();
         }else{
             JOptionPane.showMessageDialog(null, "The username or the password is uncorrect");
@@ -292,12 +289,14 @@ public class login extends javax.swing.JFrame {
         }
     }// GEN-LAST:event_logButtonMouseClicked
     
-    private String FetchAuthentication(){
+    private boolean FetchAuthentication(String usernameIn, String passwordIn){
+         String usernameAPI;
+     String passwordAPI;
         //TODO get it from API
         passwordAPI = "admin";
         usernameAPI = "admin";
-        return "00000";
-
+        authentication = "00000";
+        return passwordIn.equals(passwordAPI) && usernameIn.equals(usernameAPI);
     
     }
 

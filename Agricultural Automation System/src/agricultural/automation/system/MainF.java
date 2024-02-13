@@ -5,39 +5,46 @@ import javaswingdev.form.*;
 import javaswingdev.menu.EventMenuSelected;
 import java.util.ArrayList;
 import java.util.List;
+import javaswingdev.system.Sensable;
 
-public class MainF extends javax.swing.JFrame {
+public class MainF extends javax.swing.JFrame implements Sensable {
 
     public MainF(String authentication) {
         super("Agricultural Automation System");
         initComponents();
         init();
     }
-    
 
     private void init() {
-        
+
         menu.addEvent(new EventMenuSelected() {
             @Override
             public void menuSelected(int index, int indexSubMenu) {
-                int[][] PH = new int[300][720];
-                 List<Integer> scores = new  ArrayList<Integer>() ;
-                 //todo get sensors data 
-                for (int i = 0; i < PH.length; i++) {
-                    for (int j = 0; j < PH[0].length; j++) {
-                        PH[i][j] = (int) (Math.random() * 14);
+
+                List<Integer> scores = new ArrayList<Integer>();
+
+                try {
+                    switch (index) {
+                        case Sensable.WATER_FLOW:
+                            showForm(new BodyLineChart(scores, 20));
+
+                            break;
+                        case Sensable.PH:
+                        case Sensable.NPK:
+                        case Sensable.FOUR_IN_ONE:
+                            showForm(new BodyGrid(fetchDataFromAPI(index, indexSubMenu), index, indexSubMenu));
+                            break;
+                        case Sensable.IRRIGATION:
+                        case Sensable.FERTILIZER:
+                        case Sensable.PEST:
+                            showForm(new BodyControl(index));
+                            break;
+
+                        default:
+                            break;
                     }
 
-                }
-                try{
-                if (index == 0 && indexSubMenu == 0) {
-                    showForm(new BodyLineChart( scores ,20));
-                } else if(index == 4 || index == 5 || index == 6){
-                     showForm(new BodyControl(index));
-                } else {
-                    showForm(new BodyGrid(PH));
-                }
-                }catch(Exception  e){
+                } catch (Exception e) {
                 }
             }
         });
@@ -52,19 +59,33 @@ public class MainF extends javax.swing.JFrame {
 
     }
 
- public static void main(String args[]) {
- 
- 
- java.awt.EventQueue.invokeLater(new Runnable() {
+    private int[][] fetchDataFromAPI(int index, int indexSubMenu) {
+
+        int[][] Data = new int[300][720];
+        // return from API
+        for (int i = 0; i < Data.length; i++) {
+            for (int j = 0; j < Data[0].length; j++) {
+                Data[i][j] = (int) (Math.random() * 14);
+            }
+
+        }
+
+        return Data;
+
+    }
+
+    public static void main(String args[]) {
+
+        java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MainF("00000").setVisible(true);
             }
         });
- 
- }
- 
+
+    }
 
     @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -107,7 +128,7 @@ public class MainF extends javax.swing.JFrame {
             .addGroup(backgroundLayout.createSequentialGroup()
                 .addComponent(menuContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(body, javax.swing.GroupLayout.DEFAULT_SIZE, 1077, Short.MAX_VALUE))
+                .addComponent(body, javax.swing.GroupLayout.DEFAULT_SIZE, 1174, Short.MAX_VALUE))
         );
         backgroundLayout.setVerticalGroup(
             backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
