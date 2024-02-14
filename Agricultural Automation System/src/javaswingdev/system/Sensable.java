@@ -33,6 +33,7 @@ public interface Sensable {
     public static final byte TEMPERATURE = 4;
     public static final byte EMAIL = 7;
     public static final byte HELP = 8;
+   
 
 
 }

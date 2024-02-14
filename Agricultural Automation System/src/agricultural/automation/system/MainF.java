@@ -37,10 +37,11 @@ public class MainF extends javax.swing.JFrame implements Sensable {
                         case Sensable.FOUR_IN_ONE:
                             showForm(new BodyGrid(fetchDataFromAPI(index, indexSubMenu), index, indexSubMenu));
                             break;
+                            
                         case Sensable.IRRIGATION:
                         case Sensable.FERTILIZER:
                         case Sensable.PEST:
-                            showForm(new BodyControl(index));
+                            showForm(new BodyControl(index,getFromAPIBattary()));
                             break;
                          case Sensable.EMAIL:
                            Desktop.getDesktop().browse(new URI("mailto:abd0.humadna@gmail.com"));
@@ -81,7 +82,10 @@ public class MainF extends javax.swing.JFrame implements Sensable {
         return Data;
 
     }
-
+private int getFromAPIBattary(){
+    //todo get from API
+return (int)(Math.random()*100); 
+}
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {

@@ -225,12 +225,14 @@ private double max;
         jProgressBar1.setForeground(new java.awt.Color(34, 34, 255));
         jProgressBar1.setValue(60);
 
-        jLabel17.setText("30 m/s");
+        jLabel17.setText("max = 30 m/s");
 
         jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(51, 255, 51));
         jLabel18.setText("Current water flow");
 
         jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(51, 255, 51));
         jLabel19.setText("Water flow for 30 days");
 
         jLabel20.setText("jLabel20");

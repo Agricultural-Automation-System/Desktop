@@ -39,11 +39,11 @@ public class Menu extends JPanel {
                 "Potassium"));
         addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.SUBJECT, "4 × 1 Soil Sensor", "Soil EC",
                 "Soil Moisture Contents", "Salinity", "Soil Temperature"));
-
         addTitle("Control Mechanisms");
         addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.VIEW_HEADLINE, "The Irrigation"));
         addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.VIEW_HEADLINE, " Fertilizer Dispenser"));
-        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.VIEW_HEADLINE, "Pest Control"));
+                addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.VIEW_HEADLINE, "Pest Control"));
+
  addTitle("Contact");
          addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.EMAIL, "Email"));
  addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.HELP, "Help"));

@@ -1,75 +1,77 @@
 package javaswingdev.form;
 
-
 import java.awt.Graphics;
 import java.awt.Component;
-
+import java.awt.Color;
 
 public class BodyControl extends javax.swing.JPanel {
- private int edditColor;
- private int[][] water;
- private DrowGrid myGrid;
-    public BodyControl(int type) {
-    initComponents();
-     switch (type) {
-         case 4:
-             edditColor = 9 ;
-             
-             break;
-         case 5:
-             edditColor = 14 ;
-             break;
-         case 6:
-             edditColor = 0 ;
-             break;
-         default:
-             break;
-     }
-    
-    water = new int[300][720];
+    private int edditColor;
+    private int[][] water;
+    private DrowGrid myGrid;
+
+    public BodyControl(int type, int battary) {
+        initComponents();
+        switch (type) {
+            case 4:
+                edditColor = 9;
+
+                break;
+            case 5:
+                edditColor = 14;
+                break;
+            case 6:
+                edditColor = 0;
+                break;
+            default:
+                break;
+        }
+
+        water = new int[300][720];
         for (int i = 0; i < water.length; i++) {
             for (int j = 0; j < water[0].length; j++) {
                 water[i][j] = 7;
             }
 
         }
-     
+
         myGrid = new DrowGrid(water);
-         showGrid(myGrid);
-         if(edditColor==14){
-           
-        
-        jComboBox2.addItem( "Nitrogen fertilizers");
-         jComboBox2.addItem( "Inorganic fertilizers");
-          jComboBox2.addItem( "Phosphorus fertilizers");
-       
+        showGrid(myGrid);
+        if (edditColor == 14) {
+
+            jComboBox2.addItem("Nitrogen fertilizers");
+            jComboBox2.addItem("Inorganic fertilizers");
+            jComboBox2.addItem("Phosphorus fertilizers");
+
+        } else if (edditColor == 0) {
+
+            jComboBox2.addItem("Pesticides");
+            jComboBox2.addItem("Chemical pest control");
+            jComboBox2.addItem("Biological pest control");
 
         }
-else if(edditColor==0){
-           
-        
-        jComboBox2.addItem( "Pesticides");
-         jComboBox2.addItem( "Chemical pest control");
-          jComboBox2.addItem( "Biological pest control");
-       
-
-        }
-
+        jLabel2.setText("the battary charge is " + battary + "%");
+        jProgressBar1.setValue(battary);
+        if (battary < 15)
+            jProgressBar1.setForeground(Color.RED);
+        else if (battary < 20)
+            jProgressBar1.setForeground(Color.YELLOW);
+        else
+            jProgressBar1.setForeground(Color.GREEN);
     }
 
     private void buildWater(int x, int y) {
         for (int i = (y - 10); i < (y + 10); i++) {
             for (int j = (x - 10); j < (x + 10); j++) {
-                try{
-                water[i][j] = edditColor;
-            }catch(Exception e){
-            
-            }
-            
+                try {
+                    water[i][j] = edditColor;
+                } catch (Exception e) {
+
+                }
+
             }
 
         }
-        
+
     }
 
     public void showGrid(Component com) {
@@ -77,9 +79,11 @@ else if(edditColor==0){
         grid.add(com);
         grid.repaint();
         grid.revalidate();
-         
+
     }
+
     @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -90,6 +94,8 @@ else if(edditColor==0){
         clearButton = new javax.swing.JButton();
         jComboBox2 = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
+        jProgressBar1 = new javax.swing.JProgressBar();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -127,7 +133,10 @@ else if(edditColor==0){
         jComboBox2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(51, 255, 51));
         jLabel1.setText("Select the area where you want to issue an order");
+
+        jLabel2.setText("jLabel2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -143,8 +152,15 @@ else if(edditColor==0){
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(grid, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(62, 62, 62)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(115, 115, 115)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -160,7 +176,11 @@ else if(edditColor==0){
                         .addGap(14, 14, 14)
                         .addComponent(grid, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(182, 182, 182)
+                        .addGap(158, 158, 158)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -172,29 +192,31 @@ else if(edditColor==0){
         logButton.getAccessibleContext().setAccessibleName("postAPI");
     }// </editor-fold>//GEN-END:initComponents
 
-    private void logButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logButtonMouseClicked
-        //todo post the arr to API
+    private void logButtonMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_logButtonMouseClicked
+        // todo post the arr to API
         clearButtonMouseClicked(evt);
-    }//GEN-LAST:event_logButtonMouseClicked
+    }// GEN-LAST:event_logButtonMouseClicked
 
-    private void clearButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearButtonMouseClicked
-         water = new int[300][720];
+    private void clearButtonMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_clearButtonMouseClicked
+        water = new int[300][720];
         for (int i = 0; i < water.length; i++) {
             for (int j = 0; j < water[0].length; j++) {
                 water[i][j] = 7;
             }
 
         }
-       myGrid.setArr(water);
-    }//GEN-LAST:event_clearButtonMouseClicked
- @Override
-        protected void paintComponent(Graphics g) {
-            super.paintComponent(g);
-if (edditColor==9){
-               this.remove(jComboBox2);
-             this.revalidate();
-        } 
-}
+        myGrid.setArr(water);
+    }// GEN-LAST:event_clearButtonMouseClicked
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        if (edditColor == 9) {
+            this.remove(jComboBox2);
+            this.revalidate();
+        }
+    }
+
     private void gridMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_gridMouseClicked
         buildWater(evt.getX(), evt.getY());
 
@@ -206,6 +228,8 @@ if (edditColor==9){
     private javax.swing.JPanel grid;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JButton logButton;
     // End of variables declaration//GEN-END:variables
 }
