@@ -1,8 +1,7 @@
 package javaswingdev.form;
 
-import java.awt.Component;
-import java.awt.Graphics;
 
+import java.awt.Graphics;
 import java.awt.Component;
 
 
@@ -175,6 +174,7 @@ else if(edditColor==0){
 
     private void logButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logButtonMouseClicked
         //todo post the arr to API
+        clearButtonMouseClicked(evt);
     }//GEN-LAST:event_logButtonMouseClicked
 
     private void clearButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearButtonMouseClicked

@@ -40,13 +40,13 @@ public class BodyGrid extends javax.swing.JPanel {
                     case Sensable.EC:
                         jLabel1.setText("Soil electrical conductivity");
                         break;
-                    case Sensable.Moisture:
+                    case Sensable.MOISTURE:
                         jLabel1.setText("Moisture percentage in the soil");
                         break;
-                    case Sensable.Salinity:
+                    case Sensable.SALINITY:
                         jLabel1.setText("Salinity percentage in the soil");
                         break;
-                    case Sensable.Temperature:
+                    case Sensable.TEMPERATURE:
                         jLabel1.setText("Temperature of the soil");
                         break;
                     default:

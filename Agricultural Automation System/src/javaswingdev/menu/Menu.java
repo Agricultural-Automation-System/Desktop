@@ -44,7 +44,9 @@ public class Menu extends JPanel {
         addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.VIEW_HEADLINE, "The Irrigation"));
         addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.VIEW_HEADLINE, " Fertilizer Dispenser"));
         addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.VIEW_HEADLINE, "Pest Control"));
-
+ addTitle("Contact");
+         addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.EMAIL, "Email"));
+ addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.HELP, "Help"));
 //        addTitle("WEB APPS");
 //        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.MAIL_OUTLINE, "Email", "Inbox", "Read", "Compose"));
 //        addMenuItem(new ModelMenuItem(GoogleMaterialDesignIcon.MESSAGE, "Chat"));

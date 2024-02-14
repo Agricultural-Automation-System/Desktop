@@ -28,8 +28,11 @@ public interface Sensable {
     public static final byte P = 2;
     public static final byte K = 3;
     public static final byte EC = 1;
-    public static final byte Moisture = 2;
-    public static final byte Salinity = 3;
-    public static final byte Temperature = 4;
+    public static final byte MOISTURE = 2;
+    public static final byte SALINITY = 3;
+    public static final byte TEMPERATURE = 4;
+    public static final byte EMAIL = 7;
+    public static final byte HELP = 8;
+
 
 }

@@ -51,7 +51,7 @@ public class ScaleBody extends javax.swing.JPanel {
             Sc14.setText("1733.3- 1866.6 us/cm");
             Sc15.setText("1866.6- 2000  us/cm");
 
-        } else if (index == Sensable.FOUR_IN_ONE && indexSubMenu == Sensable.Salinity) {
+        } else if (index == Sensable.FOUR_IN_ONE && indexSubMenu == Sensable.SALINITY) {
             Sc1.setText("0    -  666.7 ppm");
             Sc2.setText("666.7 - 1333.3 ppm");
             Sc3.setText("1333.3 - 2000 ppm   ");
@@ -68,7 +68,7 @@ public class ScaleBody extends javax.swing.JPanel {
             Sc14.setText("8666.6- 9333.3 ppm");
             Sc15.setText("9333.3 - 10000  ppm");
 
-        } else if (index == Sensable.FOUR_IN_ONE && indexSubMenu == Sensable.Moisture) {
+        } else if (index == Sensable.FOUR_IN_ONE && indexSubMenu == Sensable.MOISTURE) {
             Sc1.setText("0    -  6.667 %");
             Sc2.setText("6.667 - 13.333 %");
             Sc3.setText("13.333 - 20 %   ");
@@ -85,7 +85,7 @@ public class ScaleBody extends javax.swing.JPanel {
             Sc14.setText("86.66- 93.33 %");
             Sc15.setText("93.33 - 100  %");
 
-        } else if (index == Sensable.FOUR_IN_ONE && indexSubMenu == Sensable.Temperature) {
+        } else if (index == Sensable.FOUR_IN_ONE && indexSubMenu == Sensable.TEMPERATURE) {
             Sc1.setText("0    -  6.667 C° ");
             Sc2.setText("6.667 - 13.333 C° ");
             Sc3.setText("13.333 - 20 C°    ");

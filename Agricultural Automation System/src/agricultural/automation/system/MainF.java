@@ -6,6 +6,9 @@ import javaswingdev.menu.EventMenuSelected;
 import java.util.ArrayList;
 import java.util.List;
 import javaswingdev.system.Sensable;
+import java.awt.Desktop;
+import java.net.URI;
+
 
 public class MainF extends javax.swing.JFrame implements Sensable {
 
@@ -39,7 +42,12 @@ public class MainF extends javax.swing.JFrame implements Sensable {
                         case Sensable.PEST:
                             showForm(new BodyControl(index));
                             break;
-
+                         case Sensable.EMAIL:
+                           Desktop.getDesktop().browse(new URI("mailto:abd0.humadna@gmail.com"));
+                            break; 
+                         case Sensable.HELP:
+                           Desktop.getDesktop().browse(new URI("http://www.google.com"));
+                            break;
                         default:
                             break;
                     }
@@ -48,7 +56,7 @@ public class MainF extends javax.swing.JFrame implements Sensable {
                 }
             }
         });
-        menu.setSelectedIndex(4, 0);// set the defult mode
+        menu.setSelectedIndex(0, 0);// set the defult mode
     }
 
     public void showForm(Component com) {
