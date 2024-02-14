@@ -2,7 +2,7 @@ package javaswingdev.form;
 
 //import javaswingdev.menu.EventMenuSelected;
 import org.json.simple.JSONObject;
-import weather.WeatherApp;
+import API.APIFetcher;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -82,7 +82,7 @@ public class WeatherPresen extends javax.swing.JPanel {
         windspeedText.setFont(new Font("Dialog", Font.PLAIN, 16 / 2));
         add(windspeedText);
 
-        weatherData = WeatherApp.getWeatherData(24.1292617, 32.8991424);
+        weatherData = APIFetcher.getWeatherData(24.1292617, 32.8991424);
         // update gui
 
         // update weather image
@@ -122,7 +122,7 @@ public class WeatherPresen extends javax.swing.JPanel {
 
         // update winddirection image
         long winddirection = (long) weatherData.get("winddirection");
-        System.out.println(winddirection);
+       // System.out.println(winddirection);
         windspeedImage.setIcon(rotate(3.14 / 2 + winddirection * 3.14 / 180));
 
     }

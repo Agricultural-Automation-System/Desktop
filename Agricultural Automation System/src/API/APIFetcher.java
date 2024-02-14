@@ -1,4 +1,4 @@
-package weather;
+package API;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 // retreive weather data from API - this backend logic will fetch the latest weather
 // data from the external API and return it. The GUI will
 // display this data to the user
-public class WeatherApp {
+public class APIFetcher {
     // fetch weather data for given location
     public static JSONObject getWeatherData(double latitude, double longitude) {
 

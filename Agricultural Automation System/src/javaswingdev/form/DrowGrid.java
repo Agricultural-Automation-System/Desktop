@@ -8,6 +8,7 @@ import java.awt.Graphics2D;
 import javax.swing.JPanel;
 import javaswingdev.system.Sensable;
 
+
 public class DrowGrid extends JPanel implements Sensable {
 
     protected static int ROWS = 300;
@@ -86,6 +87,8 @@ public class DrowGrid extends JPanel implements Sensable {
             }
         }
         g2d.dispose();
+        
+       
     }
 
 }

@@ -8,14 +8,18 @@ import java.util.List;
 import javaswingdev.system.Sensable;
 import java.awt.Desktop;
 import java.net.URI;
-
+import threads.Refreshing;
 
 public class MainF extends javax.swing.JFrame implements Sensable {
+    public static int index, indexSubMenu;
 
     public MainF(String authentication) {
         super("Agricultural Automation System");
         initComponents();
+
         init();
+        Refreshing x = new Refreshing(this);
+        x.start();
     }
 
     private void init() {
@@ -27,27 +31,33 @@ public class MainF extends javax.swing.JFrame implements Sensable {
                 List<Integer> scores = new ArrayList<Integer>();
 
                 try {
+
                     switch (index) {
                         case Sensable.WATER_FLOW:
                             showForm(new BodyLineChart(scores, 20));
-
+                            MainF.index = index;
+                            MainF.indexSubMenu = indexSubMenu;
                             break;
                         case Sensable.PH:
                         case Sensable.NPK:
                         case Sensable.FOUR_IN_ONE:
                             showForm(new BodyGrid(fetchDataFromAPI(index, indexSubMenu), index, indexSubMenu));
+
+                            MainF.index = index;
+                            MainF.indexSubMenu = indexSubMenu;
                             break;
-                            
                         case Sensable.IRRIGATION:
                         case Sensable.FERTILIZER:
                         case Sensable.PEST:
-                            showForm(new BodyControl(index,getFromAPIBattary()));
+                            showForm(new BodyControl(index, getFromAPIBattary()));
+                            MainF.index = index;
+                            MainF.indexSubMenu = indexSubMenu;
                             break;
-                         case Sensable.EMAIL:
-                           Desktop.getDesktop().browse(new URI("mailto:abd0.humadna@gmail.com"));
-                            break; 
-                         case Sensable.HELP:
-                           Desktop.getDesktop().browse(new URI("http://www.google.com"));
+                        case Sensable.EMAIL:
+                            Desktop.getDesktop().browse(new URI("mailto:abd0.humadna@gmail.com"));
+                            break;
+                        case Sensable.HELP:
+                            Desktop.getDesktop().browse(new URI("http://www.google.com"));
                             break;
                         default:
                             break;
@@ -60,6 +70,30 @@ public class MainF extends javax.swing.JFrame implements Sensable {
         menu.setSelectedIndex(0, 0);// set the defult mode
     }
 
+    public void refresh() {
+        List<Integer> scores = new ArrayList<Integer>();
+
+        try {
+
+            switch (index) {
+                case Sensable.WATER_FLOW:
+                    showForm(new BodyLineChart(scores, 20));
+
+                    break;
+                case Sensable.PH:
+                case Sensable.NPK:
+                case Sensable.FOUR_IN_ONE:
+                    showForm(new BodyGrid(fetchDataFromAPI(index, indexSubMenu), index, indexSubMenu));
+                    break;
+
+                default:
+                    break;
+            }
+
+        } catch (Exception e) {
+        }
+    }
+
     public void showForm(Component com) {
         body.removeAll();
         body.add(com);
@@ -68,7 +102,7 @@ public class MainF extends javax.swing.JFrame implements Sensable {
 
     }
 
-    private int[][] fetchDataFromAPI(int index, int indexSubMenu) {
+    public static int[][] fetchDataFromAPI(int index, int indexSubMenu) {
 
         int[][] Data = new int[300][720];
         // return from API
@@ -82,10 +116,12 @@ public class MainF extends javax.swing.JFrame implements Sensable {
         return Data;
 
     }
-private int getFromAPIBattary(){
-    //todo get from API
-return (int)(Math.random()*100); 
-}
+
+    private int getFromAPIBattary() {
+        // todo get from API
+        return (int) (Math.random() * 100);
+    }
+
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -100,7 +136,8 @@ return (int)(Math.random()*100);
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
     // <editor-fold defaultstate="collapsed" desc="Generated
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated
+    // Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         background = new javax.swing.JPanel();
@@ -121,13 +158,11 @@ return (int)(Math.random()*100);
         javax.swing.GroupLayout menuContainerLayout = new javax.swing.GroupLayout(menuContainer);
         menuContainer.setLayout(menuContainerLayout);
         menuContainerLayout.setHorizontalGroup(
-            menuContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
-        );
+                menuContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE));
         menuContainerLayout.setVerticalGroup(
-            menuContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, 531, Short.MAX_VALUE)
-        );
+                menuContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(menu, javax.swing.GroupLayout.DEFAULT_SIZE, 531, Short.MAX_VALUE));
 
         body.setBackground(new java.awt.Color(255, 0, 204));
         body.setOpaque(false);
@@ -136,20 +171,21 @@ return (int)(Math.random()*100);
         javax.swing.GroupLayout backgroundLayout = new javax.swing.GroupLayout(background);
         background.setLayout(backgroundLayout);
         backgroundLayout.setHorizontalGroup(
-            backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(backgroundLayout.createSequentialGroup()
-                .addComponent(menuContainer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(body, javax.swing.GroupLayout.DEFAULT_SIZE, 1174, Short.MAX_VALUE))
-        );
+                backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(backgroundLayout.createSequentialGroup()
+                                .addComponent(menuContainer, javax.swing.GroupLayout.PREFERRED_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(body, javax.swing.GroupLayout.DEFAULT_SIZE, 1174, Short.MAX_VALUE)));
         backgroundLayout.setVerticalGroup(
-            backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backgroundLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(body, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addComponent(menuContainer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+                backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backgroundLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(body, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                        javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap())
+                        .addComponent(menuContainer, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
 
         jMenuBar1.setBackground(new java.awt.Color(51, 255, 51));
 
@@ -168,13 +204,13 @@ return (int)(Math.random()*100);
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE,
+                                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
 
         pack();
         setLocationRelativeTo(null);

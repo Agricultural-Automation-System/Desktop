@@ -3,6 +3,7 @@ package javaswingdev.form;
 import javaswingdev.system.Sensable;
 import java.awt.Component;
 
+
 public class BodyGrid extends javax.swing.JPanel {
 
     // private void upDate() {
@@ -15,6 +16,17 @@ public class BodyGrid extends javax.swing.JPanel {
         initComponents();
 
         init(Data, index, indexSubMenu);
+        
+        
+       
+
+    }
+
+    public void init(int[][] Data, int index, int indexSubMenu) {
+        showWeather(new WeatherPresen());
+
+        showGrid(new DrowGrid(Data, index, indexSubMenu));
+        showScale(new ScaleBody(index, indexSubMenu));
         switch (index) {
             case Sensable.PH:
                 jLabel1.setText("Potential of Hydrogen (PH)");
@@ -60,14 +72,6 @@ public class BodyGrid extends javax.swing.JPanel {
 
     }
 
-    private void init(int[][] Data, int index, int indexSubMenu) {
-        showWeather(new WeatherPresen());
-
-        showGrid(new DrowGrid(Data, index, indexSubMenu));
-        showScale(new ScaleBody(index, indexSubMenu));
-
-    }
-
     public void showGrid(Component com) {
         grid.removeAll();
         grid.add(com);
@@ -106,6 +110,11 @@ public class BodyGrid extends javax.swing.JPanel {
 
         grid.setBackground(new java.awt.Color(102, 102, 0));
         grid.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(102, 102, 0), new java.awt.Color(102, 102, 0), new java.awt.Color(102, 102, 0), new java.awt.Color(102, 102, 0)));
+        grid.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                gridMouseClicked(evt);
+            }
+        });
         grid.setLayout(new java.awt.BorderLayout());
 
         scale.setBackground(new java.awt.Color(255, 255, 255));
@@ -151,6 +160,11 @@ public class BodyGrid extends javax.swing.JPanel {
                 .addContainerGap(104, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void gridMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gridMouseClicked
+       System.out.println(evt.toString()); // TODO add your handling code here:
+       
+    }//GEN-LAST:event_gridMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel grid;
