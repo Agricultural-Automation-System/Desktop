@@ -1,6 +1,7 @@
 # Desktop.
 
 ![image](https://github.com/Agricultural-Automation-System/Desktop/assets/112937503/28129353-11c2-4fcb-9b15-192365b7a3ec)
+
 ![image](https://github.com/Agricultural-Automation-System/Desktop/assets/112937503/640c99b9-9158-43bc-9f9c-c4bd8cd2d433)
 ## Sensors
 ### water flow
@@ -25,6 +26,7 @@
 ![image](https://github.com/Agricultural-Automation-System/Desktop/assets/112937503/d231f323-28e3-4139-9894-d466fcde954e)
 ![image](https://github.com/Agricultural-Automation-System/Desktop/assets/112937503/f760489b-4474-4d50-8935-42c6602527df)
 ![image](https://github.com/Agricultural-Automation-System/Desktop/assets/112937503/f1e6f89f-6902-45c1-bf03-6e01806aa4e3)
+
 
 
 
