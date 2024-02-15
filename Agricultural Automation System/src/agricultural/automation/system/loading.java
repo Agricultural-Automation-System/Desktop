@@ -1,21 +1,12 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package agricultural.automation.system;
 
-/**
- *
- * @author hp
- */
+
 public class loading extends javax.swing.JFrame {
 
-    /**
-     * Creates new form loading
-     */
+   
     public loading() {
-        initComponents();
-        
+        initComponents(); 
         this.load();
     }
 
@@ -93,41 +84,11 @@ public class loading extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public login load() {
-        /* Set the Nimbus look and feel */
-        // <editor-fold defaultstate="collapsed" desc=" Look and feel setting code
-        // (optional) ">
-        /*
-         * If Nimbus (introduced in Java SE 6) is not available, stay with the default
-         * look and feel.
-         * For details see
-         * http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(loading.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(loading.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(loading.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(loading.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        // </editor-fold>
-
-        /* Create and display the form */
-        
+  
+    public void load() {
+      
+      
         this.setVisible(true);
-        login mlogin = new login();
         try {
             for (int j = 0; j <= 100; j++) {
                 Thread.sleep(5);
@@ -137,7 +98,7 @@ public class loading extends javax.swing.JFrame {
         } catch (Exception e) {
             // TODO: handle exception
         }
- try {
+        try {
             
                 Thread.sleep(100);
               
@@ -146,11 +107,12 @@ public class loading extends javax.swing.JFrame {
         } catch (Exception e) {
             // TODO: handle exception
         }
-        
+ 
+        login mlogin = new login();
         mlogin.setVisible(true);
 
         this.dispose();
-        return mlogin;
+       // return mlogin;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

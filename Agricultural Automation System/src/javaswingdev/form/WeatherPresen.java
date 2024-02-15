@@ -1,14 +1,14 @@
 package javaswingdev.form;
 
-import javaswingdev.menu.EventMenuSelected;
+//import javaswingdev.menu.EventMenuSelected;
 import org.json.simple.JSONObject;
-import weather.WeatherApp;
+import API.APIFetcher;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+//import java.awt.event.ActionEvent;
+//import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -31,7 +31,7 @@ public class WeatherPresen extends javax.swing.JPanel {
             // returns an image icon so that our component can render it
             return new ImageIcon(image);
         } catch (IOException e) {
-            e.printStackTrace();
+           System.out.println(e.toString());
         }
 
         // System.out.println("Could not find resource");
@@ -82,8 +82,7 @@ public class WeatherPresen extends javax.swing.JPanel {
         windspeedText.setFont(new Font("Dialog", Font.PLAIN, 16 / 2));
         add(windspeedText);
 
-        weatherData = WeatherApp.getWeatherData(24.1292617, 32.8991424);
-
+        weatherData = APIFetcher.getWeatherData(24.1292617, 32.8991424);
         // update gui
 
         // update weather image
@@ -123,7 +122,7 @@ public class WeatherPresen extends javax.swing.JPanel {
 
         // update winddirection image
         long winddirection = (long) weatherData.get("winddirection");
-        System.out.println(winddirection);
+       // System.out.println(winddirection);
         windspeedImage.setIcon(rotate(3.14 / 2 + winddirection * 3.14 / 180));
 
     }
@@ -149,7 +148,7 @@ public class WeatherPresen extends javax.swing.JPanel {
             return new ImageIcon(result);
 
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println(e.toString());
         }
 
         return null;
