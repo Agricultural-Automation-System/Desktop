@@ -2,6 +2,7 @@ package javaswingdev.form;
 
 import javaswingdev.system.Sensable;
 import java.awt.Component;
+import java.awt.Color;
 
 
 public class BodyGrid extends javax.swing.JPanel {
@@ -11,13 +12,20 @@ public class BodyGrid extends javax.swing.JPanel {
     //
     // }
 
-    public BodyGrid(int[][] Data, int index, int indexSubMenu) {
+    public BodyGrid(int[][] Data, int index, int indexSubMenu,int battary) {
 
         initComponents();
 
         init(Data, index, indexSubMenu);
         
-        
+         jLabel2.setText("the battary charge is " + battary + "%");
+        jProgressBar1.setValue(battary);
+        if (battary < 15)
+            jProgressBar1.setForeground(Color.RED);
+        else if (battary < 20)
+            jProgressBar1.setForeground(Color.YELLOW);
+        else
+            jProgressBar1.setForeground(Color.GREEN);
        
 
     }
@@ -105,6 +113,8 @@ public class BodyGrid extends javax.swing.JPanel {
         scale = new javax.swing.JPanel();
         weather = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jProgressBar1 = new javax.swing.JProgressBar();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -128,6 +138,8 @@ public class BodyGrid extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(51, 255, 51));
         jLabel1.setText("jLabel1");
 
+        jLabel2.setText("jLabel2");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -143,7 +155,13 @@ public class BodyGrid extends javax.swing.JPanel {
                         .addComponent(weather, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(285, 285, 285)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 482, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(278, 278, 278)
+                        .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(334, 334, 334)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -157,7 +175,11 @@ public class BodyGrid extends javax.swing.JPanel {
                         .addComponent(scale, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(weather, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(grid, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addGap(25, 25, 25)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(31, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -169,6 +191,8 @@ public class BodyGrid extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel grid;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JPanel scale;
     private javax.swing.JPanel weather;
     // End of variables declaration//GEN-END:variables

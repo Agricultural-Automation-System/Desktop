@@ -2,14 +2,13 @@ package javaswingdev.form;
 
 import java.awt.Graphics;
 import java.awt.Component;
-import java.awt.Color;
 
 public class BodyControl extends javax.swing.JPanel {
     private int edditColor;
     private int[][] water;
     private DrowGrid myGrid;
 
-    public BodyControl(int type, int battary) {
+    public BodyControl(int type ) {
         initComponents();
         switch (type) {
             case 4:
@@ -49,14 +48,7 @@ public class BodyControl extends javax.swing.JPanel {
             jComboBox2.addItem("Biological pest control");
 
         }
-        jLabel2.setText("the battary charge is " + battary + "%");
-        jProgressBar1.setValue(battary);
-        if (battary < 15)
-            jProgressBar1.setForeground(Color.RED);
-        else if (battary < 20)
-            jProgressBar1.setForeground(Color.YELLOW);
-        else
-            jProgressBar1.setForeground(Color.GREEN);
+       
     }
 
     private void buildWater(int x, int y) {
@@ -94,8 +86,6 @@ public class BodyControl extends javax.swing.JPanel {
         clearButton = new javax.swing.JButton();
         jComboBox2 = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
-        jProgressBar1 = new javax.swing.JProgressBar();
-        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -136,8 +126,6 @@ public class BodyControl extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(51, 255, 51));
         jLabel1.setText("Select the area where you want to issue an order");
 
-        jLabel2.setText("jLabel2");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -152,15 +140,8 @@ public class BodyControl extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(grid, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(62, 62, 62)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(18, 18, 18)
+                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(115, 115, 115)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -176,11 +157,7 @@ public class BodyControl extends javax.swing.JPanel {
                         .addGap(14, 14, 14)
                         .addComponent(grid, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(158, 158, 158)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(207, 207, 207)
                         .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -228,8 +205,6 @@ public class BodyControl extends javax.swing.JPanel {
     private javax.swing.JPanel grid;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JButton logButton;
     // End of variables declaration//GEN-END:variables
 }

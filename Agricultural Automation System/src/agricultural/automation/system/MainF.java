@@ -12,46 +12,52 @@ import threads.Refreshing;
 
 public class MainF extends javax.swing.JFrame implements Sensable {
     public static int index, indexSubMenu;
-
+    public static Refreshing refreshing;
     public MainF(String authentication) {
         super("Agricultural Automation System");
         initComponents();
 
         init();
-        Refreshing x = new Refreshing(this);
-        x.start();
+        refreshing = new Refreshing(this);
+        refreshing.start();
     }
+    
 
     private void init() {
 
         menu.addEvent(new EventMenuSelected() {
+            
             @Override
             public void menuSelected(int index, int indexSubMenu) {
-
+              
                 List<Integer> scores = new ArrayList<Integer>();
-
+               
+                
                 try {
 
                     switch (index) {
                         case Sensable.WATER_FLOW:
-                            showForm(new BodyLineChart(scores, 20));
-                            MainF.index = index;
+                             MainF.index = index;
                             MainF.indexSubMenu = indexSubMenu;
+                            showForm(new BodyLineChart(scores, 20));
+                           
                             break;
                         case Sensable.PH:
                         case Sensable.NPK:
                         case Sensable.FOUR_IN_ONE:
-                            showForm(new BodyGrid(fetchDataFromAPI(index, indexSubMenu), index, indexSubMenu));
-
-                            MainF.index = index;
+                             MainF.index = index;
                             MainF.indexSubMenu = indexSubMenu;
+                            showForm(new BodyGrid(fetchDataFromAPI(index, indexSubMenu), index, indexSubMenu, getFromAPIBattary()));
+
+                           
                             break;
                         case Sensable.IRRIGATION:
                         case Sensable.FERTILIZER:
                         case Sensable.PEST:
-                            showForm(new BodyControl(index, getFromAPIBattary()));
-                            MainF.index = index;
+                             MainF.index = index;
                             MainF.indexSubMenu = indexSubMenu;
+                            showForm(new BodyControl(index));
+                           
                             break;
                         case Sensable.EMAIL:
                             Desktop.getDesktop().browse(new URI("mailto:abd0.humadna@gmail.com"));
@@ -77,13 +83,13 @@ public class MainF extends javax.swing.JFrame implements Sensable {
 
             switch (index) {
                 case Sensable.WATER_FLOW:
-                    showForm(new BodyLineChart(scores, 20));
+                    showForm(new BodyLineChart(scores,(int) (Math.random()*30)));
 
                     break;
                 case Sensable.PH:
                 case Sensable.NPK:
                 case Sensable.FOUR_IN_ONE:
-                    showForm(new BodyGrid(fetchDataFromAPI(index, indexSubMenu), index, indexSubMenu));
+                    showForm(new BodyGrid(fetchDataFromAPI(index, indexSubMenu), index, indexSubMenu, getFromAPIBattary()));
                     break;
 
                 default:

@@ -17,8 +17,9 @@ public class Refreshing extends Thread  {
    public void run(){
       while(true)
        try{
-           Thread.sleep(1000);
+          
             father.refresh();
+            Thread.sleep(1000);
            // System.out.println("hi");
        }catch(Exception e){
        
