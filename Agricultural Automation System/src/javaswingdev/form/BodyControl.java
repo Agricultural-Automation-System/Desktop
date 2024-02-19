@@ -37,15 +37,15 @@ public class BodyControl extends javax.swing.JPanel {
         showGrid(myGrid);
         if (edditColor == 14) {
 
-            jComboBox2.addItem("Nitrogen fertilizers");
-            jComboBox2.addItem("Inorganic fertilizers");
-            jComboBox2.addItem("Phosphorus fertilizers");
+            typeOfMaterialCompo.addItem("Nitrogen fertilizers");
+            typeOfMaterialCompo.addItem("Inorganic fertilizers");
+            typeOfMaterialCompo.addItem("Phosphorus fertilizers");
 
         } else if (edditColor == 0) {
 
-            jComboBox2.addItem("Pesticides");
-            jComboBox2.addItem("Chemical pest control");
-            jComboBox2.addItem("Biological pest control");
+            typeOfMaterialCompo.addItem("Pesticides");
+            typeOfMaterialCompo.addItem("Chemical pest control");
+            typeOfMaterialCompo.addItem("Biological pest control");
 
         }
        
@@ -84,8 +84,9 @@ public class BodyControl extends javax.swing.JPanel {
         grid = new javax.swing.JPanel();
         logButton = new javax.swing.JButton();
         clearButton = new javax.swing.JButton();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        typeOfMaterialCompo = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
+        periodicTime = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -119,12 +120,16 @@ public class BodyControl extends javax.swing.JPanel {
             }
         });
 
-        jComboBox2.setBackground(new java.awt.Color(51, 255, 51));
-        jComboBox2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        typeOfMaterialCompo.setBackground(new java.awt.Color(51, 255, 51));
+        typeOfMaterialCompo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 255, 51));
         jLabel1.setText("Select the area where you want to issue an order");
+
+        periodicTime.setBackground(new java.awt.Color(51, 255, 51));
+        periodicTime.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        periodicTime.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Execute now ", "Execute every day", "Execute every week", "Execute every month " }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -140,30 +145,34 @@ public class BodyControl extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(grid, javax.swing.GroupLayout.PREFERRED_SIZE, 720, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(typeOfMaterialCompo, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(periodicTime, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(115, 115, 115)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(14, 14, 14)
                         .addComponent(grid, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(207, 207, 207)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(32, 32, 32)
+                        .addGap(176, 176, 176)
+                        .addComponent(periodicTime, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(typeOfMaterialCompo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(logButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(clearButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(39, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         logButton.getAccessibleContext().setAccessibleName("postAPI");
@@ -189,7 +198,7 @@ public class BodyControl extends javax.swing.JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         if (edditColor == 9) {
-            this.remove(jComboBox2);
+            this.remove(typeOfMaterialCompo);
             this.revalidate();
         }
     }
@@ -203,8 +212,9 @@ public class BodyControl extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton clearButton;
     private javax.swing.JPanel grid;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton logButton;
+    private javax.swing.JComboBox<String> periodicTime;
+    private javax.swing.JComboBox<String> typeOfMaterialCompo;
     // End of variables declaration//GEN-END:variables
 }

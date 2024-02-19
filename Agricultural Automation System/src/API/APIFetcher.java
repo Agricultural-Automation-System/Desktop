@@ -3,21 +3,32 @@ package API;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-
+import java.util.ArrayList;
+import java.util.List;
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
-import javax.swing.JOptionPane;
+import pnotification.Notification;
+import agricultural.automation.system.MainF;
+import java.awt.*;
+import java.awt.TrayIcon.MessageType;
+
 
 // retreive weather data from API - this backend logic will fetch the latest weather
 // data from the external API and return it. The GUI will
 // display this data to the user
 public class APIFetcher {
+
+    private static String idAuth;
+    private static double latitude;
+    private static double longitude;
+    public static int[][] dataGrid;
+
     // fetch weather data for given location
-    public static JSONObject getWeatherData(double latitude, double longitude) {
+    public static JSONObject getWeatherData() {
 
         // build API request URL with location coordinates
         String urlString = "https://api.open-meteo.com/v1/forecast?latitude=" + latitude + "&longitude=" + longitude +
@@ -28,7 +39,7 @@ public class APIFetcher {
 
             // check for response status
             // 200 - means that the connection was a success
-           
+
             if (conn.getResponseCode() != 200) {
                 System.out.println("Error: Could not connect to API");
                 return null;
@@ -41,8 +52,7 @@ public class APIFetcher {
                 // read and store into the string builder
                 resultJson.append(scanner.nextLine());
             }
- 
-          
+
             // close scanner
             scanner.close();
 
@@ -92,7 +102,7 @@ public class APIFetcher {
 
             return weatherData;
         } catch (Exception e) {
-            //e.printStackTrace();
+            // e.printStackTrace();
         }
 
         return null;
@@ -113,8 +123,13 @@ public class APIFetcher {
             conn.connect();
             return conn;
         } catch (IOException e) {
-                        JOptionPane.showMessageDialog(null, "your conectin has a poblem");
-
+            //JOptionPane.showMessageDialog(null, "your conectin has a problem");
+            
+            
+           
+                Notification panel = new Notification(MainF.me, Notification.Type.WARNING, Notification.Location.CENTER, "your conectin has a problem");
+                panel.showNotification();
+            
         }
 
         // could not make connection
@@ -168,5 +183,101 @@ public class APIFetcher {
         }
 
         return weatherCondition;
+    }
+
+    // send the user name and pass to return id Authentication
+    public static boolean Authentication(String usernameIn, String passwordIn) {
+
+        if (usernameIn.equals("farmer") && passwordIn.equals("farmer")) {
+            idAuth = "f0000";
+            latitude = 24.1292617;
+            longitude = 32.8991424;
+            return true;
+        } else if (usernameIn.equals("owner") && passwordIn.equals("owner")) {
+            idAuth = "o0000";
+            latitude = 24.1292617;
+            longitude = 32.8991424;
+            return true;
+        }
+
+        return false;
+
+    }
+
+    public static boolean isFarmer() {
+        return idAuth.charAt(0) == 'f';
+    }
+
+    // get water flo data from the API server
+    public static List<Integer> getWaterFLowData() {
+        List<Integer> scores = new ArrayList<Integer>();
+        for (int i = 0; i < 30; i++) {
+            scores.add((int) (Math.random() * 30));
+        }
+        return scores;
+    }
+
+    public static int getCurrentWaterFlow() {
+
+        return (int) (Math.random() * 30);
+    }
+
+    public static int getBattary() {
+        
+try{
+    //Obtain only one instance of the SystemTray object
+    SystemTray tray = SystemTray.getSystemTray();
+
+    // If you want to create an icon in the system tray to preview
+    Image image = Toolkit.getDefaultToolkit().createImage("some-icon.png");
+    //Alternative (if the icon is on the classpath):
+    //Image image = Toolkit.getDefaultToolkit().createImage(getClass().getResource("icon.png"));
+
+    TrayIcon trayIcon = new TrayIcon(image, "Java AWT Tray Demo");
+    //Let the system resize the image if needed
+    trayIcon.setImageAutoSize(true);
+    //Set tooltip text for the tray icon
+    trayIcon.setToolTip("System tray icon demo");
+    tray.add(trayIcon);
+
+    // Display info notification:
+    trayIcon.displayMessage("Hello, World", "Java Notification Demo", MessageType.INFO);
+    // Error:
+    // trayIcon.displayMessage("Hello, World", "Java Notification Demo", MessageType.ERROR);
+    // Warning:
+    // trayIcon.displayMessage("Hello, World", "Java Notification Demo", MessageType.WARNING);
+}catch(Exception ex){
+    System.err.print(ex);
+}
+        return (int) (Math.random() * 100);
+    }
+
+    public static int[][] getDataGrid(int index, int indexSubMenu) {
+
+        int[][] data = new int[300][720];
+        // return from API
+        for (int i = 0; i < data.length; i++) {
+            for (int j = 0; j < data[0].length; j++) {
+                data[i][j] = (int) (Math.random() * 14);
+            }
+
+        }
+
+        dataGrid = data;
+        return data;
+    }
+    public static int[][] getDataGrid(String cropType) {
+
+        int[][] data = new int[300][720];
+        // return from API
+        for (int i = 0; i < data.length; i++) {
+            for (int j = 0; j < data[0].length; j++) {
+                data[i][j] = (int) (Math.random() * 14);
+            }
+
+        }
+
+        dataGrid = data;
+        return data;
     }
 }

@@ -19,7 +19,7 @@ public class Refreshing extends Thread  {
        try{
           
             father.refresh();
-            Thread.sleep(1000);
+            Thread.sleep(5000);
            // System.out.println("hi");
        }catch(Exception e){
        

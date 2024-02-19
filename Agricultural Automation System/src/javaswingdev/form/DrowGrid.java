@@ -7,6 +7,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JPanel;
 import javaswingdev.system.Sensable;
+import API.APIFetcher;
 
 
 public class DrowGrid extends JPanel implements Sensable {
@@ -22,7 +23,9 @@ public class DrowGrid extends JPanel implements Sensable {
 
     
 
-    public DrowGrid(int[][] Data, int index, int indexSubMenu) {
+    public DrowGrid( int index, int indexSubMenu) {
+        
+        int[][] Data = APIFetcher.getDataGrid(index,indexSubMenu);
         ROWS = Data.length;
         COLS = Data[0].length;
         this.Data= Data.clone();
@@ -35,7 +38,8 @@ public class DrowGrid extends JPanel implements Sensable {
                 break;
 
             case Sensable.NPK:
-                case Sensable.FOUR_IN_ONE:
+            case Sensable.FOUR_IN_ONE:
+                case Sensable.CROP:
                 CLORE_R = NPK_SCALE_R.clone();
                 CLORE_G = NPK_SCALE_G.clone();
                 CLORE_B = NPK_SCALE_B.clone();
@@ -44,11 +48,26 @@ public class DrowGrid extends JPanel implements Sensable {
         }
   
     }
+    public DrowGrid(  String TypeCrop) {
+        
+        int[][] Data = APIFetcher.getDataGrid( TypeCrop);
+        ROWS = Data.length;
+        COLS = Data[0].length;
+        this.Data= Data.clone();
+        
+                CLORE_R = NPK_SCALE_R.clone();
+                CLORE_G = NPK_SCALE_G.clone();
+                CLORE_B = NPK_SCALE_B.clone();
+               
+           
+        
+  
+    }
 
     public DrowGrid(int[][] Data) {
         ROWS = Data.length;
         COLS = Data[0].length;
- this.Data= Data.clone();
+        this.Data= Data.clone();
         CLORE_R = PH_SCALE_R.clone();
         CLORE_G = PH_SCALE_G.clone();
         CLORE_B = PH_SCALE_B.clone();
@@ -59,7 +78,7 @@ public class DrowGrid extends JPanel implements Sensable {
     public void setArr(int[][] Data) {
         ROWS = Data.length;
         COLS = Data[0].length;
- this.Data= Data.clone();
+        this.Data= Data.clone();
                 repaint();
     }
   

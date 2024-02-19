@@ -6,11 +6,12 @@ import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import API.APIFetcher;
 
 public class login extends javax.swing.JFrame {
 
     
-    private String authentication;
+    
     public login() {
         initComponents();
     }
@@ -106,6 +107,11 @@ public class login extends javax.swing.JFrame {
         logButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 logButtonMouseClicked(evt);
+            }
+        });
+        logButton.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                logButtonKeyPressed(evt);
             }
         });
 
@@ -266,6 +272,27 @@ public class login extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_forgPassMouseClicked
 
+    private void logButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_logButtonKeyPressed
+        if(evt.getExtendedKeyCode()== 10){
+        String usernameIn = username.getText();
+        String passwordIn = password.getText();
+         if (usernameIn.equals("")) {
+
+            JOptionPane.showMessageDialog(null, "Please fill out the username");
+
+        }else if (passwordIn.equals("")) {
+
+            JOptionPane.showMessageDialog(null, "Please fill out the password");
+
+        } else if (APIFetcher.Authentication(usernameIn, passwordIn)) {
+            this.load();
+        }else{
+            JOptionPane.showMessageDialog(null, "The username or the password is uncorrect");
+
+        }
+        }
+    }//GEN-LAST:event_logButtonKeyPressed
+
     private void exitPanelMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_exitPanelMouseClicked
         this.dispose();
     }// GEN-LAST:event_exitPanelMouseClicked
@@ -281,7 +308,7 @@ public class login extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(null, "Please fill out the password");
 
-        } else if (FetchAuthentication(usernameIn, passwordIn)) {
+        } else if (APIFetcher.Authentication(usernameIn, passwordIn)) {
             this.load();
         }else{
             JOptionPane.showMessageDialog(null, "The username or the password is uncorrect");
@@ -289,20 +316,11 @@ public class login extends javax.swing.JFrame {
         }
     }// GEN-LAST:event_logButtonMouseClicked
     
-    private boolean FetchAuthentication(String usernameIn, String passwordIn){
-         String usernameAPI;
-     String passwordAPI;
-        //TODO get it from API
-        passwordAPI = "admin";
-        usernameAPI = "admin";
-        authentication = "00000";
-        return passwordIn.equals(passwordAPI) && usernameIn.equals(usernameAPI);
     
-    }
 
     private void load() {
         System.out.println("loaded");
-        MainF f = new MainF(authentication);
+        MainF f = new MainF();
         f.setVisible(true);
         this.dispose();
     }

@@ -82,7 +82,7 @@ public class WeatherPresen extends javax.swing.JPanel {
         windspeedText.setFont(new Font("Dialog", Font.PLAIN, 16 / 2));
         add(windspeedText);
 
-        weatherData = APIFetcher.getWeatherData(24.1292617, 32.8991424);
+        weatherData = APIFetcher.getWeatherData();
         // update gui
 
         // update weather image

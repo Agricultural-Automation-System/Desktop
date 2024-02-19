@@ -1,27 +1,27 @@
 package javaswingdev.form;
 
 
+import API.APIFetcher;
 import java.awt.Component;
 import java.util.*;
 
 
 public class BodyLineChart extends javax.swing.JPanel {
 private double max;
-    public BodyLineChart(   List<Integer> scores,int currentWaterFlow) {
+    public BodyLineChart(  ) {
         initComponents();
-        init( scores);
+        init( APIFetcher.getWaterFLowData());
        //lb.setText("Form " + name);
+       int currentWaterFlow=APIFetcher.getCurrentWaterFlow();
         this.jProgressBar1.setValue((int)(currentWaterFlow*100.0/30));
         jLabel20.setText(currentWaterFlow+" m/s");
 
     }
 
-    private void init( List<Integer> scores) {
+    private void init(List<Integer> scores) {
     
        
-        for(int i =0;i<30;i++){
-        scores.add((int)(Math.random()*30));
-        }
+        
        max = (Collections.max(scores)+1);
        double step =(Collections.max(scores)+1)/10.0;
         showGrid(new DrowLinechart(scores));
@@ -254,8 +254,8 @@ private double max;
                         .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(300, 300, 300)
-                        .addComponent(jLabel20)
-                        .addGap(157, 157, 157)
+                        .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(139, 139, 139)
                         .addComponent(jLabel17))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(317, 317, 317)
