@@ -2,6 +2,7 @@ package javaswingdev.form;
 
 import java.awt.Graphics;
 import java.awt.Component;
+import javaswingdev.system.Sensable;
 
 public class BodyControl extends javax.swing.JPanel {
     private int edditColor;
@@ -11,14 +12,14 @@ public class BodyControl extends javax.swing.JPanel {
     public BodyControl(int type ) {
         initComponents();
         switch (type) {
-            case 4:
+            case Sensable.IRRIGATION:
                 edditColor = 9;
 
                 break;
-            case 5:
+            case Sensable.FERTILIZER:
                 edditColor = 14;
                 break;
-            case 6:
+            case Sensable.PEST:
                 edditColor = 0;
                 break;
             default:
