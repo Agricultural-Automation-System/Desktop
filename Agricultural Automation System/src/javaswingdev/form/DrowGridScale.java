@@ -35,6 +35,7 @@ public class DrowGridScale extends JPanel implements Sensable {
                 break;
 
             case Sensable.NPK:
+                case Sensable.CROP:
                 case Sensable.FOUR_IN_ONE:
                 CLORE_R = NPK_SCALE_R.clone();
                 CLORE_G = NPK_SCALE_G.clone();

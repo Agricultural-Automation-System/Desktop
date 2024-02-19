@@ -3,23 +3,30 @@ package agricultural.automation.system;
 import java.awt.Component;
 import javaswingdev.form.*;
 import javaswingdev.menu.EventMenuSelected;
-import java.util.ArrayList;
-import java.util.List;
+//import java.util.ArrayList;
+//import java.util.List;
 import javaswingdev.system.Sensable;
 import java.awt.Desktop;
 import java.net.URI;
 import threads.Refreshing;
+import API.APIFetcher;
+import javax.swing.JOptionPane;
 
 public class MainF extends javax.swing.JFrame implements Sensable {
     public static int index, indexSubMenu;
-    public static Refreshing refreshing;
-    public MainF(String authentication) {
+    private BodyGrid bodyGrid;
+    public static MainF me;
+   
+    
+    
+    public MainF() {
         super("Agricultural Automation System");
         initComponents();
 
         init();
-        refreshing = new Refreshing(this);
+        Refreshing refreshing = new Refreshing(this);
         refreshing.start();
+        me = this;
     }
     
 
@@ -29,17 +36,15 @@ public class MainF extends javax.swing.JFrame implements Sensable {
             
             @Override
             public void menuSelected(int index, int indexSubMenu) {
-              
-                List<Integer> scores = new ArrayList<Integer>();
-               
+         
                 
                 try {
 
                     switch (index) {
                         case Sensable.WATER_FLOW:
-                             MainF.index = index;
+                            MainF.index = index;
                             MainF.indexSubMenu = indexSubMenu;
-                            showForm(new BodyLineChart(scores, 20));
+                            showForm(new BodyLineChart());
                            
                             break;
                         case Sensable.PH:
@@ -47,16 +52,22 @@ public class MainF extends javax.swing.JFrame implements Sensable {
                         case Sensable.FOUR_IN_ONE:
                              MainF.index = index;
                             MainF.indexSubMenu = indexSubMenu;
-                            showForm(new BodyGrid(fetchDataFromAPI(index, indexSubMenu), index, indexSubMenu, getFromAPIBattary()));
+                            bodyGrid = new BodyGrid(index, indexSubMenu);
+                            showForm(bodyGrid);
 
                            
                             break;
                         case Sensable.IRRIGATION:
                         case Sensable.FERTILIZER:
                         case Sensable.PEST:
+                            if (APIFetcher.isFarmer()){
                              MainF.index = index;
                             MainF.indexSubMenu = indexSubMenu;
                             showForm(new BodyControl(index));
+                            }else{
+                                        JOptionPane.showMessageDialog(null, "you are oner the access is denied");
+
+                            }
                            
                             break;
                         case Sensable.EMAIL:
@@ -65,7 +76,10 @@ public class MainF extends javax.swing.JFrame implements Sensable {
                         case Sensable.HELP:
                             Desktop.getDesktop().browse(new URI("http://www.google.com"));
                             break;
-                        default:
+                        case Sensable.CROP:
+                             MainF.index = index;
+                            MainF.indexSubMenu = indexSubMenu;
+                               showForm(new BodyCrop(index, indexSubMenu));
                             break;
                     }
 
@@ -77,19 +91,19 @@ public class MainF extends javax.swing.JFrame implements Sensable {
     }
 
     public void refresh() {
-        List<Integer> scores = new ArrayList<Integer>();
+       
 
         try {
 
             switch (index) {
                 case Sensable.WATER_FLOW:
-                    showForm(new BodyLineChart(scores,(int) (Math.random()*30)));
+                    showForm(new BodyLineChart());
 
                     break;
                 case Sensable.PH:
                 case Sensable.NPK:
                 case Sensable.FOUR_IN_ONE:
-                    showForm(new BodyGrid(fetchDataFromAPI(index, indexSubMenu), index, indexSubMenu, getFromAPIBattary()));
+                    bodyGrid.init(index, indexSubMenu);
                     break;
 
                 default:
@@ -108,31 +122,15 @@ public class MainF extends javax.swing.JFrame implements Sensable {
 
     }
 
-    public static int[][] fetchDataFromAPI(int index, int indexSubMenu) {
+   
 
-        int[][] Data = new int[300][720];
-        // return from API
-        for (int i = 0; i < Data.length; i++) {
-            for (int j = 0; j < Data[0].length; j++) {
-                Data[i][j] = (int) (Math.random() * 14);
-            }
-
-        }
-
-        return Data;
-
-    }
-
-    private int getFromAPIBattary() {
-        // todo get from API
-        return (int) (Math.random() * 100);
-    }
+    
 
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainF("00000").setVisible(true);
+                new MainF().setVisible(true);
             }
         });
 

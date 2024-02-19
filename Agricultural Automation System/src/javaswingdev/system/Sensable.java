@@ -21,9 +21,9 @@ public interface Sensable {
     public static final byte PH = 1;
     public static final byte NPK = 2;
     public static final byte FOUR_IN_ONE = 3;
-    public static final byte IRRIGATION = 4;
-    public static final byte FERTILIZER = 5;
-    public static final byte PEST = 6;
+    public static final byte IRRIGATION = 5;
+    public static final byte FERTILIZER = 6;
+    public static final byte PEST = 7;
     public static final byte N = 1;
     public static final byte P = 2;
     public static final byte K = 3;
@@ -31,8 +31,9 @@ public interface Sensable {
     public static final byte MOISTURE = 2;
     public static final byte SALINITY = 3;
     public static final byte TEMPERATURE = 4;
-    public static final byte EMAIL = 7;
-    public static final byte HELP = 8;
+    public static final byte EMAIL = 8;
+    public static final byte HELP = 9;
+    public static final byte CROP = 4;
    
 
 
