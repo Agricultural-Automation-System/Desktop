@@ -1,7 +1,10 @@
 
 package agricultural.automation.system;
 
-
+/**
+ * its form for fun and little performance 
+ * @author hp
+ */
 public class loading extends javax.swing.JFrame {
 
    
@@ -84,7 +87,10 @@ public class loading extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-  
+  /**
+   * this function do the motion of this form  by the progress bar
+   * and starts the login frame
+   */
     public void load() {
       
       

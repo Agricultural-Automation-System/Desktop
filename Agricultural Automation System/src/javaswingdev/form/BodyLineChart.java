@@ -4,10 +4,17 @@ package javaswingdev.form;
 import API.APIFetcher;
 import java.awt.Component;
 import java.util.*;
-
+/**
+ * this the item or form used to present the water flow in line chart form
+ * @author AbdElrahman Humadna Allah
+ */
 
 public class BodyLineChart extends javax.swing.JPanel {
 private double max;
+
+/**
+ * constructor to set the default vale of the current water flow
+ */
     public BodyLineChart(  ) {
         initComponents();
         init( APIFetcher.getWaterFLowData());
@@ -17,14 +24,17 @@ private double max;
         jLabel20.setText(currentWaterFlow+" m/s");
 
     }
-
+/**
+ * set the suitable scale label of the  Y-axis
+ * @param scores 
+ */
     private void init(List<Integer> scores) {
     
        
         
        max = (Collections.max(scores)+1);
        double step =(Collections.max(scores)+1)/10.0;
-        showGrid(new DrowLinechart(scores));
+        showGrid(new DrawLinechart(scores));
         showWeather(new WeatherPresen());
         
         String formattedString = String.format("%.2f", (step*1));
@@ -51,13 +61,20 @@ private double max;
         
 
     }
-
+/**
+     * delete the current Grid and insert the new Grid
+     * @param com the selected form to be presented
+     */
     public void showGrid(Component com) {
-        grid1.removeAll();
-        grid1.add(com);
-        grid1.repaint();
-        grid1.revalidate();
+        grid.removeAll();
+        grid.add(com);
+        grid.repaint();
+        grid.revalidate();
     }
+/**
+     * delete the current Weather and insert the new Weather
+     * @param com the selected Weather to be presented
+     */
     public void showWeather(Component com) {
         weather.removeAll();
         weather.add(com);

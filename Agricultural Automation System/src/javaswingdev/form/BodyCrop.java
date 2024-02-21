@@ -3,11 +3,18 @@ package javaswingdev.form;
 
 import java.awt.Component;
 import API.APIFetcher;
-
+/**
+ * this the item or form used to present the Crops
+ * @author AbdElrahman Humadna Allah
+ */
 public class BodyCrop extends javax.swing.JPanel {
 
   
-
+/**
+ * constructor to set the default items of the Combo Box
+ * @param index - number of the item in the menu
+ * @param indexSubMenu number of the  subitem in the menu
+ */
     public BodyCrop(int index, int indexSubMenu) {
 
         initComponents();
@@ -16,11 +23,15 @@ public class BodyCrop extends javax.swing.JPanel {
             typeOfMaterialCompo.addItem("corn");
             typeOfMaterialCompo.addItem("barley");
     }
-
+/**
+ * Show the pars of the body
+* @param index - number of the item in the menu
+ * @param indexSubMenu number of the  subitem in the menu
+ */
     public void init(int index, int indexSubMenu) {
         showWeather(new WeatherPresen());
 
-        showGrid(new DrowGrid(typeOfMaterialCompo.getItemAt(0)));
+        showGrid(new DrawGrid(typeOfMaterialCompo.getItemAt(0)));
         showScale(new ScaleBody(index, indexSubMenu));
         
                 jLabel1.setText("The last amont of the crops");
@@ -29,21 +40,30 @@ public class BodyCrop extends javax.swing.JPanel {
         
 
     }
-
+/**
+     * delete the current Grid and insert the new Grid
+     * @param com the selected form to be presented
+     */
     public void showGrid(Component com) {
         grid.removeAll();
         grid.add(com);
         grid.repaint();
         grid.revalidate();
     }
-
+/**
+     * delete the current Weather and insert the new Weather
+     * @param com the selected Weather to be presented
+     */
     public void showWeather(Component com) {
         weather.removeAll();
         weather.add(com);
         weather.repaint();
         weather.revalidate();
     }
-
+/**
+     * delete the current Scale and insert the new Scale
+     * @param com the selected Scale to be presented
+     */
     public void showScale(Component com) {
         scale.removeAll();
         scale.add(com);
@@ -141,10 +161,13 @@ public class BodyCrop extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void typeOfMaterialCompoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_typeOfMaterialCompoItemStateChanged
-            showGrid(new DrowGrid( evt.getItem().toString() ));
+            showGrid(new DrawGrid( evt.getItem().toString() ));
      // TODO add your handling code here:
     }//GEN-LAST:event_typeOfMaterialCompoItemStateChanged
-
+/**
+ * show the selected point on the grid in typed form 
+ * @param evt - get the position on the grid
+ */
     private void gridMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_gridMouseClicked
        
                 jLabel3.setText("the vale is " +  (14 - APIFetcher.dataGrid[evt.getY()][evt.getX()]) * 100 / 14 + " Ton");

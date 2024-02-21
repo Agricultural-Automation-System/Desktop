@@ -7,7 +7,10 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import API.APIFetcher;
-
+/**
+ * the frame to login to your account and manage it in main frame(MainF)
+ * @author AbdElrahman Humadna Allah
+ */
 public class login extends javax.swing.JFrame {
 
     
@@ -246,12 +249,18 @@ public class login extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    /**
+     * button event to clear the text and password field 
+     * @param evt mouse click event (not used)
+     */
     private void clearButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearButtonMouseClicked
        username.setText("");
        password.setText("");
     }//GEN-LAST:event_clearButtonMouseClicked
-
+/**
+ * label used for go to sign up page on web app
+ * @param evt mouse click event (not used)
+ */
     private void signUpLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signUpLabelMouseClicked
       try {
          
@@ -261,7 +270,10 @@ public class login extends javax.swing.JFrame {
         //e1.printStackTrace();
     }
     }//GEN-LAST:event_signUpLabelMouseClicked
-
+/**
+ * label used for go to forget password page on web app
+ * @param evt mouse click event (not used)
+ */
     private void forgPassMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_forgPassMouseClicked
       try {
          
@@ -271,7 +283,10 @@ public class login extends javax.swing.JFrame {
         //e1.printStackTrace();
     }
     }//GEN-LAST:event_forgPassMouseClicked
-
+/**
+ * function to check from password and username to get data user from the API with enter key press event
+ * @param evt key press event used to match with enter key(KeyCode = 10)
+ */
     private void logButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_logButtonKeyPressed
         if(evt.getExtendedKeyCode()== 10){
         String usernameIn = username.getText();
@@ -292,11 +307,17 @@ public class login extends javax.swing.JFrame {
         }
         }
     }//GEN-LAST:event_logButtonKeyPressed
-
+/**
+ * exit panel function event 
+ * @param evt mouse click event (not used)
+ */
     private void exitPanelMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_exitPanelMouseClicked
         this.dispose();
     }// GEN-LAST:event_exitPanelMouseClicked
-
+/**
+ * function to check from password and username to get data user from the API
+ * @param evt mouse click event (not used)
+ */
     private void logButtonMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_logButtonMouseClicked
         String usernameIn = username.getText();
         String passwordIn = password.getText();
@@ -317,9 +338,11 @@ public class login extends javax.swing.JFrame {
     }// GEN-LAST:event_logButtonMouseClicked
     
     
-
+/**
+ * function used to launch the main frame after the authentication
+ */
     private void load() {
-        System.out.println("loaded");
+        //System.out.println("loaded");
         MainF f = new MainF();
         f.setVisible(true);
         this.dispose();

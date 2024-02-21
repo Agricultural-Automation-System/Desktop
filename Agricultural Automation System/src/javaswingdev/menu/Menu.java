@@ -14,6 +14,11 @@ import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
 import net.miginfocom.swing.MigLayout;
 
+/**
+ * * Click https://github.com/DJ-Raven
+ * @author reven
+ */
+
 public class Menu extends JPanel {
 
     private int index = -1;

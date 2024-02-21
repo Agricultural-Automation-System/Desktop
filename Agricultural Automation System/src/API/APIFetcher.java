@@ -11,15 +11,16 @@ import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
-import pnotification.Notification;
-import agricultural.automation.system.MainF;
 import java.awt.*;
 import java.awt.TrayIcon.MessageType;
+import javax.swing.JOptionPane;
 
 
-// retreive weather data from API - this backend logic will fetch the latest weather
-// data from the external API and return it. The GUI will
-// display this data to the user
+/**retreive weather data from API - 
+ * this backend logic will fetch the latest weather
+* data from the external API and return it. The GUI will
+* display this data to the user
+*/
 public class APIFetcher {
 
     private static String idAuth;
@@ -27,7 +28,10 @@ public class APIFetcher {
     private static double longitude;
     public static int[][] dataGrid;
 
-    // fetch weather data for given location
+    /**
+     *fetch weather data for given location
+     * return JSONObject that is the JSON response from the AOI
+     */
     public static JSONObject getWeatherData() {
 
         // build API request URL with location coordinates
@@ -108,9 +112,13 @@ public class APIFetcher {
         return null;
     }
 
-    // retrieves geographic coordinates for given location name
+    /**
+     * retrieves geographic coordinates for given location name
+     *@param urlString the url of the API request
+     * return HttpURLConnection of the API
+     */
 
-    private static HttpURLConnection fetchApiResponse(String urlString) {
+    public static HttpURLConnection fetchApiResponse(String urlString) {
         try {
             // attempt to create connection
             URL url = new URL(urlString);
@@ -123,20 +131,18 @@ public class APIFetcher {
             conn.connect();
             return conn;
         } catch (IOException e) {
-            //JOptionPane.showMessageDialog(null, "your conectin has a problem");
-            
-            
-           
-                Notification panel = new Notification(MainF.me, Notification.Type.WARNING, Notification.Location.CENTER, "your conectin has a problem");
-                panel.showNotification();
-            
+            JOptionPane.showMessageDialog(null, "your conectin has a problem");    
         }
 
         // could not make connection
         return null;
     }
-
-    private static int findIndexOfCurrentTime(JSONArray timeList) {
+/**
+ * find Index Of Current Time from JSONArray of date
+ * @param timeList the JSONArray of date
+ * @return the index
+ */
+    public static int findIndexOfCurrentTime(JSONArray timeList) {
         String currentTime = getCurrentTime();
 
         // iterate through the time list and see which one matches our current time
@@ -185,7 +191,11 @@ public class APIFetcher {
         return weatherCondition;
     }
 
-    // send the user name and pass to return id Authentication
+    /** send the user name and pass to return id Authentication
+    * @param usernameIn the input user name
+    * @param passwordIn the input pass
+    * return the result of the Authentication
+    */
     public static boolean Authentication(String usernameIn, String passwordIn) {
 
         if (usernameIn.equals("farmer") && passwordIn.equals("farmer")) {
@@ -203,12 +213,18 @@ public class APIFetcher {
         return false;
 
     }
-
+/**
+ * check from the type of the user
+ * @return 
+ */
     public static boolean isFarmer() {
         return idAuth.charAt(0) == 'f';
     }
-
-    // get water flo data from the API server
+/**
+ * get water flo data from the API server
+ * @return the new data
+ */
+    
     public static List<Integer> getWaterFLowData() {
         List<Integer> scores = new ArrayList<Integer>();
         for (int i = 0; i < 30; i++) {
@@ -216,12 +232,18 @@ public class APIFetcher {
         }
         return scores;
     }
-
+/**
+ * get current water flow data from the API server
+ * @return the new data
+ */
     public static int getCurrentWaterFlow() {
 
         return (int) (Math.random() * 30);
     }
-
+/**
+ * get battery data from the API server
+ * @return the new data
+ */
     public static int getBattary() {
         
 try{
@@ -251,7 +273,10 @@ try{
 }
         return (int) (Math.random() * 100);
     }
-
+/**
+ * get sensors data from the API server
+ * @return the new data
+ */
     public static int[][] getDataGrid(int index, int indexSubMenu) {
 
         int[][] data = new int[300][720];
@@ -266,6 +291,10 @@ try{
         dataGrid = data;
         return data;
     }
+    /**
+ * get crops data from the API server
+ * @return the new data
+ */
     public static int[][] getDataGrid(String cropType) {
 
         int[][] data = new int[300][720];

@@ -1,8 +1,19 @@
+
+
+
+
 package agricultural.automation.system;
 
-import pnotification.*;
-
+/**
+ * 
+ * @author AbdElrahman Humadna Allah
+ */
 public class AgriculturalAutomationSystem {
+    
+    /**
+     * 
+     * @param args - not used
+     */
 
     public static void main(String[] args)  {
 

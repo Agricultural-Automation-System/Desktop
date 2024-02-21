@@ -4,7 +4,10 @@ import javaswingdev.system.Sensable;
 import java.awt.Component;
 import java.awt.Color;
 import API.APIFetcher;
-
+/**
+ * this the item or form used to present the sensors Data
+ * @author AbdElrahman Humadna Allah
+ */
 public class BodyGrid extends javax.swing.JPanel {
 
     private static int index;
@@ -20,11 +23,15 @@ public class BodyGrid extends javax.swing.JPanel {
         init(index, indexSubMenu);
 
     }
-
+/**
+ * select the sensor data to be presented  and set the battary value
+ * @param index
+ * @param indexSubMenu 
+ */
     public void init(int index, int indexSubMenu) {
         showWeather(new WeatherPresen());
 
-        showGrid(new DrowGrid(index, indexSubMenu));
+        showGrid(new DrawGrid(index, indexSubMenu));
         showScale(new ScaleBody(index, indexSubMenu));
         switch (index) {
             case Sensable.PH:
@@ -81,20 +88,30 @@ public class BodyGrid extends javax.swing.JPanel {
 
     }
 
+   /**
+     * delete the current Grid and insert the new Grid
+     * @param com the selected form to be presented
+     */
     public void showGrid(Component com) {
         grid.removeAll();
         grid.add(com);
         grid.repaint();
         grid.revalidate();
     }
-
+/**
+     * delete the current Weather and insert the new Weather
+     * @param com the selected Weather to be presented
+     */
     public void showWeather(Component com) {
         weather.removeAll();
         weather.add(com);
         weather.repaint();
         weather.revalidate();
     }
-
+/**
+     * delete the current Scale and insert the new Scale
+     * @param com the selected Scale to be presented
+     */
     public void showScale(Component com) {
         scale.removeAll();
         scale.add(com);

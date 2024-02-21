@@ -3,22 +3,29 @@ package agricultural.automation.system;
 import java.awt.Component;
 import javaswingdev.form.*;
 import javaswingdev.menu.EventMenuSelected;
-//import java.util.ArrayList;
-//import java.util.List;
 import javaswingdev.system.Sensable;
 import java.awt.Desktop;
 import java.net.URI;
-import threads.Refreshing;
+import javaswingdev.system.Refreshing;
 import API.APIFetcher;
 import javax.swing.JOptionPane;
 
+/**
+ * the main frame that contain the item of the program
+ * 
+ * @author AbdElrahman Humadna Allah
+ */
+
 public class MainF extends javax.swing.JFrame implements Sensable {
-    public static int index, indexSubMenu;
-    private BodyGrid bodyGrid;
-    public static MainF me;
-   
-    
-    
+
+    public static int index, indexSubMenu; // the item is seleted now from the menu
+    private BodyGrid bodyGrid; // we use it for refreshing in refresh method
+    public static MainF me; // we use it for set notification
+
+    /**
+     * the constructor for initializing, paint component and start thread for refresh
+     * the main frame
+     */
     public MainF() {
         super("Agricultural Automation System");
         initComponents();
@@ -28,16 +35,16 @@ public class MainF extends javax.swing.JFrame implements Sensable {
         refreshing.start();
         me = this;
     }
-    
-
+    /**
+     * adding event for the menu to select the item to be presented 
+     */
     private void init() {
 
         menu.addEvent(new EventMenuSelected() {
-            
+
             @Override
             public void menuSelected(int index, int indexSubMenu) {
-         
-                
+
                 try {
 
                     switch (index) {
@@ -45,30 +52,29 @@ public class MainF extends javax.swing.JFrame implements Sensable {
                             MainF.index = index;
                             MainF.indexSubMenu = indexSubMenu;
                             showForm(new BodyLineChart());
-                           
+
                             break;
                         case Sensable.PH:
                         case Sensable.NPK:
                         case Sensable.FOUR_IN_ONE:
-                             MainF.index = index;
+                            MainF.index = index;
                             MainF.indexSubMenu = indexSubMenu;
                             bodyGrid = new BodyGrid(index, indexSubMenu);
                             showForm(bodyGrid);
 
-                           
                             break;
                         case Sensable.IRRIGATION:
                         case Sensable.FERTILIZER:
                         case Sensable.PEST:
-                            if (APIFetcher.isFarmer()){
-                             MainF.index = index;
-                            MainF.indexSubMenu = indexSubMenu;
-                            showForm(new BodyControl(index));
-                            }else{
-                                        JOptionPane.showMessageDialog(null, "you are oner the access is denied");
+                            if (APIFetcher.isFarmer()) {
+                                MainF.index = index;
+                                MainF.indexSubMenu = indexSubMenu;
+                                showForm(new BodyControl(index));
+                            } else {
+                                JOptionPane.showMessageDialog(null, "you are oner the access is denied");
 
                             }
-                           
+
                             break;
                         case Sensable.EMAIL:
                             Desktop.getDesktop().browse(new URI("mailto:abd0.humadna@gmail.com"));
@@ -77,9 +83,9 @@ public class MainF extends javax.swing.JFrame implements Sensable {
                             Desktop.getDesktop().browse(new URI("http://www.google.com"));
                             break;
                         case Sensable.CROP:
-                             MainF.index = index;
+                            MainF.index = index;
                             MainF.indexSubMenu = indexSubMenu;
-                               showForm(new BodyCrop(index, indexSubMenu));
+                            showForm(new BodyCrop(index, indexSubMenu));
                             break;
                     }
 
@@ -87,11 +93,12 @@ public class MainF extends javax.swing.JFrame implements Sensable {
                 }
             }
         });
-        menu.setSelectedIndex(0, 0);// set the defult mode
+        menu.setSelectedIndex(0, 0);// set the defult item
     }
-
+    /**
+     * replace the data that presented now by newer data 
+     */
     public void refresh() {
-       
 
         try {
 
@@ -114,6 +121,10 @@ public class MainF extends javax.swing.JFrame implements Sensable {
         }
     }
 
+    /**
+     * delete the current Forme (item) and insert the selected form
+     * @param com the selected form to be presented
+     */
     public void showForm(Component com) {
         body.removeAll();
         body.add(com);
@@ -122,19 +133,7 @@ public class MainF extends javax.swing.JFrame implements Sensable {
 
     }
 
-   
 
-    
-
-    public static void main(String args[]) {
-
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MainF().setVisible(true);
-            }
-        });
-
-    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated

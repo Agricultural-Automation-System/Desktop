@@ -1,18 +1,17 @@
 package javaswingdev.form;
 
-//import javaswingdev.menu.EventMenuSelected;
 import org.json.simple.JSONObject;
 import API.APIFetcher;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-//import java.awt.event.ActionEvent;
-//import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
+/**
+ * this the item or form used to present the current weather
+ * @author AbdElrahman Humadna Allah
+ */
 public class WeatherPresen extends javax.swing.JPanel {
     private JSONObject weatherData;
 
@@ -22,7 +21,11 @@ public class WeatherPresen extends javax.swing.JPanel {
         setMyCompo();
 
     }
-
+    /**
+     * lode an image to ImageIcon instance
+     * @param resourcePath the path of the image 
+     * @return the ImageIcon instance that is loaded 
+     */
     private ImageIcon loadImage(String resourcePath) {
         try {
             // read the image file from the path given
@@ -37,7 +40,10 @@ public class WeatherPresen extends javax.swing.JPanel {
         // System.out.println("Could not find resource");
         return null;
     }
-
+    
+    /**
+     * get the status weather and present it in gui form 
+     */
     public void setMyCompo() {
 
         JLabel weatherConditionImage = new JLabel(loadImage("src/Image/cloudy.png"));
@@ -126,7 +132,11 @@ public class WeatherPresen extends javax.swing.JPanel {
         windspeedImage.setIcon(rotate(3.14 / 2 + winddirection * 3.14 / 180));
 
     }
-
+/**
+ * rotate the arrow image of the wind direction
+ * @param angle - the value of the angle rotation
+ * @return the new ImageIcon after rotation 
+ */
     public static ImageIcon rotate(double angle) {
         try {
             // read the image file from the path given

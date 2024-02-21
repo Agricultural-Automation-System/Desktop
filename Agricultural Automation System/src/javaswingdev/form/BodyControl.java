@@ -3,13 +3,21 @@ package javaswingdev.form;
 import java.awt.Graphics;
 import java.awt.Component;
 import javaswingdev.system.Sensable;
+/**
+ * this the item or form used to present the control mechanism
+ * @author AbdElrahman Humadna Allah
+ */
 
 public class BodyControl extends javax.swing.JPanel {
-    private int edditColor;
-    private int[][] water;
-    private DrowGrid myGrid;
-
-    public BodyControl(int type ) {
+    private int edditColor;//color to select regon
+    private int[][] dataGrid; 
+    private DrawGrid myGrid;
+/**
+ * constructor to set the default Data grid, edditColor and items of the Combo Box
+ * @param type the type of the control
+ */
+    public BodyControl(int type) {
+        
         initComponents();
         switch (type) {
             case Sensable.IRRIGATION:
@@ -26,15 +34,15 @@ public class BodyControl extends javax.swing.JPanel {
                 break;
         }
 
-        water = new int[300][720];
-        for (int i = 0; i < water.length; i++) {
-            for (int j = 0; j < water[0].length; j++) {
-                water[i][j] = 7;
+        dataGrid = new int[300][720];
+        for (int i = 0; i < dataGrid.length; i++) {
+            for (int j = 0; j < dataGrid[0].length; j++) {
+                dataGrid[i][j] = 7;
             }
 
         }
 
-        myGrid = new DrowGrid(water);
+        myGrid = new DrawGrid(dataGrid);
         showGrid(myGrid);
         if (edditColor == 14) {
 
@@ -51,12 +59,17 @@ public class BodyControl extends javax.swing.JPanel {
         }
        
     }
-
-    private void buildWater(int x, int y) {
+    
+    /**
+     * update the data grid around Square 20×20 to selected 
+     * @param x the position of origen square on x axis 
+     * @param y the position of origen square on x axis 
+     */
+    private void buildSelectedRegon(int x, int y) {
         for (int i = (y - 10); i < (y + 10); i++) {
             for (int j = (x - 10); j < (x + 10); j++) {
                 try {
-                    water[i][j] = edditColor;
+                    dataGrid[i][j] = edditColor;
                 } catch (Exception e) {
 
                 }
@@ -66,7 +79,10 @@ public class BodyControl extends javax.swing.JPanel {
         }
 
     }
-
+/**
+     * delete the current Grid and insert the new Grid
+     * @param com the selected Grid to be presented
+     */
     public void showGrid(Component com) {
         grid.removeAll();
         grid.add(com);
@@ -178,21 +194,27 @@ public class BodyControl extends javax.swing.JPanel {
 
         logButton.getAccessibleContext().setAccessibleName("postAPI");
     }// </editor-fold>//GEN-END:initComponents
-
+/**
+ * clear the grid
+ * @param evt 
+ */
     private void logButtonMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_logButtonMouseClicked
         // todo post the arr to API
         clearButtonMouseClicked(evt);
     }// GEN-LAST:event_logButtonMouseClicked
-
+/**
+ * clear the grid
+ * @param evt - not used
+ */
     private void clearButtonMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_clearButtonMouseClicked
-        water = new int[300][720];
-        for (int i = 0; i < water.length; i++) {
-            for (int j = 0; j < water[0].length; j++) {
-                water[i][j] = 7;
+        dataGrid = new int[300][720];
+        for (int i = 0; i < dataGrid.length; i++) {
+            for (int j = 0; j < dataGrid[0].length; j++) {
+                dataGrid[i][j] = 7;
             }
 
         }
-        myGrid.setArr(water);
+        myGrid.setArr(dataGrid);
     }// GEN-LAST:event_clearButtonMouseClicked
 
     @Override
@@ -203,11 +225,14 @@ public class BodyControl extends javax.swing.JPanel {
             this.revalidate();
         }
     }
-
+/**
+ * update the point to was clicked 
+ * @param evt take the position of the click on the grid
+ */
     private void gridMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_gridMouseClicked
-        buildWater(evt.getX(), evt.getY());
+        buildSelectedRegon(evt.getX(), evt.getY());
 
-        myGrid.setArr(water);
+        myGrid.setArr(dataGrid);
     }// GEN-LAST:event_gridMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

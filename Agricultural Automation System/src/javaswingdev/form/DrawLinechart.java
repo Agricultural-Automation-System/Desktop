@@ -13,9 +13,12 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
+/**
+ * draw the line chart representation
+ * @author AbdElrahman Humadna Allah 
+ */
 @SuppressWarnings("serial")
-public class DrowLinechart extends JPanel {
+public class DrawLinechart extends JPanel {
    private  int MAX_SCORE = 100;
    private static final int PREF_W = 800;
    private static final int PREF_H = 650;
@@ -28,13 +31,16 @@ public class DrowLinechart extends JPanel {
    private List<Integer> scores;
 
    
-   public DrowLinechart(List<Integer> scores) {
+   public DrawLinechart(List<Integer> scores) {
       this.scores = scores;
       MAX_SCORE = Collections.max(scores)+1;
     
      
    }
-
+/**
+ * draw the line chart by the input list
+ * @param g - current graphics 
+ */
    @Override
    protected void paintComponent(Graphics g) {
       super.paintComponent(g);
@@ -123,29 +129,5 @@ for(int i=y0; i< y1 ;i=i+15){
       return new Dimension(PREF_W, PREF_H);
    }
 
-   // private static void createAndShowGui() {
-   // List<Integer> scores = new ArrayList<Integer>();
-   // Random random = new Random();
-   // int maxDataPoints = 16;
-   // int maxScore = 20;
-   // for (int i = 0; i < maxDataPoints ; i++) {
-   // scores.add(random.nextInt(maxScore));
-   // }
-   // DrowLinechart mainPanel = new DrowLinechart(scores);
-   //
-   // JFrame frame = new JFrame("DrawGraph");
-   // frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-   // frame.getContentPane().add(mainPanel);
-   // frame.pack();
-   // frame.setLocationByPlatform(true);
-   // frame.setVisible(true);
-   // }
-
-   // public static void main(String[] args) {
-   // SwingUtilities.invokeLater(new Runnable() {
-   // public void run() {
-   // createAndShowGui();
-   // }
-   // });
-   // }
+ 
 }

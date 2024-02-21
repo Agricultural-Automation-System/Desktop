@@ -4,6 +4,10 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Graphics;
 import javaswingdev.system.Sensable;
+/**
+ * this the item or form used to present the scale
+ * @author AbdElrahman Humadna Allah
+ */
 
 public class ScaleBody extends javax.swing.JPanel {
 
@@ -13,10 +17,14 @@ public class ScaleBody extends javax.swing.JPanel {
         init(index, indexSubMenu);
 
     }
-
+    /**
+     * set the mode color of the scale and set the suitable unit for the scale  
+* @param index - number of the item in the menu
+ * @param indexSubMenu number of the  subitem in the menu
+ */
     private void init(int index, int indexSubMenu) {
 
-        showGridScale(new DrowGridScale(index, indexSubMenu));
+        showGridScale(new DrawGridScale(index, indexSubMenu));
         if (index == Sensable.NPK) {
             Sc1.setText("0      - 133.33 mg/kg");
             Sc2.setText("133.33 - 266.67 mg/kg");
@@ -122,7 +130,10 @@ public class ScaleBody extends javax.swing.JPanel {
         }
 
     }
-
+/**
+     * delete the current Grid and insert the new Grid
+     * @param com the selected form to be presented
+     */
     public void showGridScale(Component com) {
         gridScale.removeAll();
         gridScale.add(com);
